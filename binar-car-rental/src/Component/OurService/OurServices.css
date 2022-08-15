@@ -1,0 +1,58 @@
+#ourServices {
+    min-height: 500px;
+}
+
+.person-img {
+    height: 366px;
+}
+
+.circle1 {
+    width: 10vw;
+    height: 10vw;
+    background-color: #92D094;
+    border-radius: 50%;
+    position: absolute;
+    left: 10%;
+}
+
+.circle2 {
+    width: 5vw;
+    height: 5vw;
+    background-color: #F9CC00;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+}
+
+.circle3 {
+    width: 5%;
+    background-color: #92D094;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+}
+
+ul {
+    list-style: none;
+}
+
+.our-services::before {
+    position: absolute;
+    left: 0;
+    content: '\2713';
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #CFD4ED;
+    color: #0D28A6;    ;
+    left: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    .person-img {
+        height: 200px;
+    }
+}

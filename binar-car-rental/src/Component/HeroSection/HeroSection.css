@@ -1,0 +1,70 @@
+section {
+    margin-bottom: 20px;
+}
+
+#hero {
+    background-color:#F1F3FF;
+}
+
+.navbar-brand {
+    background-color: #0D28A6;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler:focus, .navbar-toggler:active {
+    outline: none;
+}
+
+.car-img {
+    width: 100%;
+    transform: scaleX(-1);
+}
+
+.border {
+    border: solid 2px black;
+}
+
+.car-background {
+    content: '';
+    background-color:#0D28A6;
+    position: absolute;
+    top: 45%;
+    left: 3%;
+    width: 97%;
+    height: 55%;
+    border-radius: 30% 0 0 0;
+}
+
+.btn-success {
+    width: 160px;
+}
+
+
+@media screen and (width < 678px) {
+    .show, .collapsing {
+        width: 60%;
+        height: 100%;
+        background-color: white;
+        position: fixed;
+        right: 0;
+        top: 0;
+        margin-left: 1rem;
+        z-index: 2;
+        line-height: 30px;
+        padding: 40px 0 0 40px;
+    }
+
+    .show::before, .collapsing::before {
+        content: 'BCR';
+    }
+    
+    .navbar-toggler {
+        z-index: 3;
+    }
+}
+
+
+
