@@ -37,32 +37,33 @@ function CarSection() {
 
     return (
         <Fragment>
-            <SearchBar carName={carName} setCarName={setCarName}/>
+            <SearchBar setCarName={setCarName}/>
             <section id="Cars">
                 <div className="container">
                     <div className="row">
-                    {   !loading ? (
-                            cars? (
-                                cars.map((car, index) => {
-                                    return (
-                                        <div key={index} className="col-lg-4">                   
-                                            <div className="card p-3 d-flex flex-column justify-content-between" style={{height: '100%'}}>
-                                                <img src={car.image} alt="" style={{width: '100%'}} />
-                                                <p>{car.name}</p>
-                                                <h5>Rp {car.price.toLocaleString('en-US')}/ Hari</h5>
-                                                <p className="fw-bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                                <a href={`/car/${car.id}`} className="btn btn-success" style={{width:"100%"}}>Pilih Mobil</a>
+                        {
+                            !loading ? (
+                                cars? (
+                                    cars.map((car, index) => {
+                                        return (
+                                            <div key={index} className="col-lg-4">                   
+                                                <div className="card p-3 d-flex flex-column justify-content-between" style={{height: '100%'}}>
+                                                    <img src={car.image} alt="" style={{width: '100%'}} />
+                                                    <p>{car.name}</p>
+                                                    <h5>Rp {car.price.toLocaleString('en-US')}/ Hari</h5>
+                                                    <p className="fw-bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                                    <a href={`/car/${car.id}`} className="btn btn-success" style={{width:"100%"}}>Pilih Mobil</a>
+                                                </div>
                                             </div>
-                                        </div>
-                                    )
-                                })
+                                        )
+                                    })
+                                ) : (
+                                    <h1>Mobil Tidak Ditemukan</h1>
+                                )
                             ) : (
-                                <h1>Mobil Tidak Ditemukan</h1>
+                                <h1 className="text-center">Loading....</h1>
                             )
-                        ) : (
-                            <h1 className="text-center">Loading....</h1>
-                        )
-                    }
+                        }
                     </div>
                 </div>
             </section>
