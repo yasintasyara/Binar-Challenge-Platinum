@@ -2,7 +2,7 @@ import React from "react";
 
 
 
-function SearchBar({carName, setCarName}) { 
+function SearchBar({setCarName}) { 
     return (
         <section id="searchBar" className="mb-5" style={{marginTop: "-90px"}}>
             <div className="container d-flex justify-content-center">
