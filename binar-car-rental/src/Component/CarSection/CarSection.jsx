@@ -49,7 +49,7 @@ function CarSection() {
                                             <div className="card p-3 d-flex flex-column justify-content-between" style={{height: '100%'}}>
                                                 <img src={car.image} alt="" style={{width: '100%'}} />
                                                 <p>{car.name}</p>
-                                                <h5>Rp {car.price.toLocaleString('en-US')}</h5>
+                                                <h5>Rp {car.price.toLocaleString('en-US')}/ Hari</h5>
                                                 <p className="fw-bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                                                 <a href={`/car/${car.id}`} className="btn btn-success" style={{width:"100%"}}>Pilih Mobil</a>
                                             </div>
