@@ -5,16 +5,23 @@ import Home from './Pages/Home';
 import NotFound from './Pages/NotFound';
 import Car from './Pages/Car';
 import CarDetail from './Pages/CarDetail';
-import { BrowserRouter, Routes, Route, link} from 'react-router-dom';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import Search from './Pages/Search'
 
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path='/' element={<Home />} />
-        <Route path='/car' element={<Car />} />
-        <Route path='/car/:id' element={<CarDetail />} />
+        <Route path='/'>
+          <Route index element={<Home />} />
+          <Route path='car'>
+            <Route index element={<Car />} />
+            <Route path='search' element={<Search />} />
+            <Route path=':id' element={<CarDetail />} />
+            <Route path='*' element={<NotFound />} />
+          </Route>
+        </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>

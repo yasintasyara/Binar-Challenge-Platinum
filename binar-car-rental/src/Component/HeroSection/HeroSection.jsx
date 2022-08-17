@@ -1,18 +1,26 @@
 import React from 'react';
+import { useState } from 'react';
+import { useRef } from 'react';
 import './HeroSection.css';
 
 
 
 function HeroSection() {
+    const [sidebar, setSidebar] = useState('collapse');
+
+    window.addEventListener('scroll', () => {
+        setSidebar('collapse');
+    })
+
     return (
         <section id="hero" style={{minHeight: '500px'}}>
             <nav className="navbar navbar-expand-lg navbar-light">
                 <div className="container mt-3">
                     <a className="navbar-brand text-light px-3 ml-3" href="/">BinarRent</a>
-                    <button style={{zIndex: '3'}} className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <button onClick={() => sidebar == 'collapse'? setSidebar(null): setSidebar('collapse')} style={{zIndex: '3'}} className="navbar-toggler" type="button">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div className="navbar-collapse collapse" id='navbarNav'>
+                    <div className={`navbar-collapse ${sidebar}`} id='navbarNav'>
                         <ul className="navbar-nav ml-auto mr-5">
                             <li className="nav-item mr-3">
                                 <a className="nav-link" href="/#ourServices">Our Services</a>

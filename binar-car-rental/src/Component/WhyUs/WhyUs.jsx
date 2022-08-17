@@ -1,14 +1,13 @@
 import React from "react";
-import "./WhyUs.css";
 
 
 function WhyUs() {
     return (
-        <section id="whyUs" className="d-flex flex-column justify-content-center">
+        <section id="whyUs" className="d-flex flex-column justify-content-center" style={{minHeight: '300px'}}>
             <div className="container mb-5">
                 <h3>Why Us?</h3>
                 <p>Mengapa harus pilih Binar Car Rental?</p>
-                <div className="row">
+                <div className="row" style={{rowGap: '15px'}}>
                     <div className="col-lg-3">
                         <div className="card p-3" style={{height: '100%'}}>
                             <h3><i className="fa-solid fa-thumbs-up p-2 my-3" style={{color: 'white', backgroundColor: '#F9CC00', borderRadius: '50%'}}></i></h3>

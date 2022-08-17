@@ -1,10 +1,9 @@
 import React from "react";
-import "./Faq.css";
 
 
 function Faq() {
     return (
-        <section id="faq" className="mt-5">
+        <section id="faq" className="mt-5" style={{minHeight: '400px'}}>
             <div className="container">
                 <div className="row mt-4">
                     <div className="col-lg-6">
@@ -25,7 +24,7 @@ function Faq() {
                             <div className="card pt-3">
                                 <p className=" d-flex justify-content-between">Apakah Ada biaya antar-jemput?<i className="fa-solid fa-chevron-down "></i></p>
                             </div>
-                            <div className="card  pt-3">
+                            <div className="card pt-3">
                                 <p className=" d-flex justify-content-between">Bagaimana jika terjadi kecelakaan<i className="fa-solid fa-chevron-down "></i></p> 
                             </div>
                         </div>

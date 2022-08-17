@@ -43,9 +43,9 @@ section {
 }
 
 
-@media screen and (width < 678px) {
-    .show, .collapsing {
-        width: 60%;
+@media screen and (width < 992px) {
+    .navbar-collapse {
+        width: 50%;
         height: 100%;
         background-color: white;
         position: fixed;
@@ -54,11 +54,12 @@ section {
         margin-left: 1rem;
         z-index: 2;
         line-height: 30px;
-        padding: 40px 0 0 40px;
+        padding: 35px 0 0 40px;
     }
 
-    .show::before, .collapsing::before {
+    .navbar-collapse::before {
         content: 'BCR';
+        font-weight: bold;
     }
     
     .navbar-toggler {
