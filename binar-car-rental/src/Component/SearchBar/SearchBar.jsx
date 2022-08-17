@@ -2,7 +2,7 @@ import React from "react";
 
 
 
-function SearchBar({setCarName}) { 
+function SearchBar({setCarName, setSearchParams}) { 
     return (
         <section id="searchBar" className="mb-5" style={{marginTop: "-90px"}}>
             <div className="container d-flex justify-content-center">
@@ -12,7 +12,7 @@ function SearchBar({setCarName}) {
                         <div className="row">
                             <div className="col-lg-3 d-flex flex-column justify-content-between">
                                 <label htmlFor="carName">Nama Mobil</label>
-                                <input className="p-1" type="text" id="carName" name="carName" onChange={(e) => setCarName(e.target.value)}/>
+                                <input className="p-1" type="text" id="carName" name="carName" onChange={(e) => {setCarName(e.target.value); setSearchParams('')}}/>
                             </div>
 
                             <div className="col-lg-3 d-flex flex-column justify-content-between">

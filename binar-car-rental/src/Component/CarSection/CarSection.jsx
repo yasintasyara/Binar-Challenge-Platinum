@@ -37,7 +37,7 @@ function CarSection() {
 
     return (
         <Fragment>
-            <SearchBar setCarName={setCarName}/>
+            <SearchBar setCarName={setCarName} setSearchParams={setSearchParams}/>
             <section id="Cars">
                 <div className="container">
                     <div className="row">
