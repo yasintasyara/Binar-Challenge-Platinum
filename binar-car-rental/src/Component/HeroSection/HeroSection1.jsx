@@ -37,9 +37,9 @@ function HeroSection1() {
             
             <div className="container mt-5">
                 <div className="row">
-                    <div className="col-lg-6 d-flex flex-column justify-content-center pr-5">
+                    <div className="col-lg-6 d-flex flex-column justify-content-center">
                         <h1>Sewa & Rental Mobil Terbaik di kawasan (Lokasimu)</h1>
-                        <p className="mt-4">Selamat datang di Binar Car Rental. Kami menyediakan mobil kualitas terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu untuk sewa mobil selama 24 jam.</p>
+                        <p className="mt-4 mr-4">Selamat datang di Binar Car Rental. Kami menyediakan mobil kualitas terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu untuk sewa mobil selama 24 jam.</p>
                     </div>
                     <div className="col-lg-6">
                         <div className="car-background"></div>
@@ -47,6 +47,7 @@ function HeroSection1() {
                     </div>
                 </div>
             </div>
+
         </section>
     )
 }

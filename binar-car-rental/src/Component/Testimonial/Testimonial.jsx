@@ -9,10 +9,10 @@ function Testimonial() {
                     <p>Berbagai review positif dari para pelanggan kami</p>
                 </div>
 
-                <div className="d-flex">
+                <div className="d-flex justify-content-center">
                     <div className="card d-flex p-3 border" style={{width: '619px', minHeight: '270px', backgroundColor: '#F1F3FF'}}>
-                        <div className="row border">
-                            <div className="col-lg-3 d-flex align-items-center">
+                        <div className="row align-items-center border" style={{height: '100%'}}>
+                            <div className="col-lg-3 d-flex align-items-center justify-content-center">
                                 <img src="./Assets/img_photo.png" alt="person" />
                             </div>
                             <div className="col-lg-9">
@@ -29,8 +29,8 @@ function Testimonial() {
                         </div>
                     </div>
                     <div className="card p-3 d-flex border" style={{width: '619px', minHeight: '270px', backgroundColor: '#F1F3FF'}}>
-                        <div className="row border">
-                            <div className="col-lg-3 d-flex align-items-center">
+                        <div className="row d-flex align-items-center border" style={{height: '100%'}}>
+                            <div className="col-lg-3 d-flex align-items-center justify-content-center">
                                 <img src="./Assets/img_photo.png" alt="person" />
                             </div>
                             <div className="col-lg-9">
@@ -47,8 +47,8 @@ function Testimonial() {
                         </div>
                     </div>
                     <div className="card p-3 d-flex" style={{width: '619px', minHeight: '270px', backgroundColor: '#F1F3FF'}}>
-                        <div className="row border">
-                            <div className="col-lg-3 d-flex align-items-center">
+                        <div className="row d-flex align-items-center border" style={{height: '100%'}}>
+                            <div className="col-lg-3 d-flex align-items-center justify-content-center border">
                                 <img src="./Assets/img_photo.png" alt="person" />
                             </div>
                             <div className="col-lg-9">

@@ -7,30 +7,32 @@
 }
 
 .circle1 {
-    width: 10vw;
-    height: 10vw;
+    width: 133px;
+    height: 133px;
     background-color: #92D094;
     border-radius: 50%;
     position: absolute;
-    left: 10%;
+    left: 0;
 }
 
 .circle2 {
-    width: 5vw;
-    height: 5vw;
+    width: 48px;
+    height: 48px;
     background-color: #F9CC00;
     border-radius: 50%;
     position: absolute;
     bottom: 10px;
-    left: 20px;
+    left: 60px;
 }
 
 .circle3 {
-    width: 5%;
-    background-color: #92D094;
+    width: 24px;
+    height: 24px;
+    background-color: red;
     border-radius: 50%;
     position: absolute;
-    left: 50%;
+    right: 120px;
+    top: 50px;
 }
 
 ul {
@@ -54,5 +56,30 @@ ul {
 @media screen and (max-width: 768px) {
     .person-img {
         height: 200px;
+    }
+
+    .circle1 {
+        width: 71px;
+        height: 71px;
+    }
+
+    .circle2 {
+        width: 26px;
+        height: 26px;
+    }
+
+    .circle3 {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .circle1 {
+        left: 54px;
+    }
+
+    .circle2 {
+        left: 86px;
     }
 }
