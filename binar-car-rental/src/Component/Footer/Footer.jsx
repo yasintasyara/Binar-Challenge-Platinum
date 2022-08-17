@@ -13,16 +13,16 @@ function Footer() {
                         <p className="fw-bold">081-233-334-808</p>
                     </div>
                     <div className="col-lg-2 links">
-                        <a href="#ourServices">
+                        <a href="/#ourServices">
                             <p>Our Services</p> 
                         </a>
-                        <a href="#whyUs">
+                        <a href="/#whyUs">
                             <p>Why Us</p>
                         </a>
-                        <a href="#testimonial">
+                        <a href="/#testimonial">
                             <p>Testimonial</p>
                         </a>
-                        <a href="#faq">
+                        <a href="/#faq">
                             <p>FAQ</p>
                         </a>
                     </div>

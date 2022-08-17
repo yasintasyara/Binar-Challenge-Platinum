@@ -12,12 +12,12 @@ function SearchBar({setCarName, setSearchParams}) {
                         <div className="row">
                             <div className="col-lg-3 d-flex flex-column justify-content-between">
                                 <label htmlFor="carName">Nama Mobil</label>
-                                <input className="p-1" type="text" id="carName" name="carName" onChange={(e) => {setCarName(e.target.value); setSearchParams('')}}/>
+                                <input className="p-2" type="text" id="carName" name="carName" style={{height: '35px'}} onChange={(e) => {setCarName(e.target.value); setSearchParams('')}}/>
                             </div>
 
                             <div className="col-lg-3 d-flex flex-column justify-content-between">
                                 <label htmlFor="category">Kategori</label>
-                                <select className="p-1" name="category" id="category">
+                                <select name="category" id="category" style={{height: '35px'}}>
                                     <option value="2 - 4 orang"> 2 - 4 orang</option>
                                     <option value="4 - 6 orang"> 4 - 6 orang</option>
                                     <option value="6 - 8 orang"> 6 - 8 orang</option>
@@ -26,7 +26,7 @@ function SearchBar({setCarName, setSearchParams}) {
 
                             <div className="col-lg-3 d-flex flex-column justify-content-between">
                                 <label htmlFor="price">Harga</label>
-                                <select className="p-1" name="price" placeholder="Masukan Harga Sewa per Hari" id="price">
+                                <select className="p-1" name="price" id="price" style={{height: '35px'}}>
                                     <option value="400000"> &#60; Rp. 400.000</option>
                                     <option value="400000-600000"> Rp. 400.000 - Rp.600.000</option>
                                     <option value="600000"> &#62; Rp. 600.000 </option>
@@ -35,7 +35,7 @@ function SearchBar({setCarName, setSearchParams}) {
 
                             <div className="col-lg-2 d-flex flex-column justify-content-between">
                                 <label htmlFor="status">Status</label>
-                                <select className="p-1" name="status" id="status">
+                                <select className="p-1" name="status" id="status" style={{height: '35px'}}>
                                     <option value="disewa">Disewa</option>
                                 </select>
                             </div>

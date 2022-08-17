@@ -38,15 +38,15 @@ function CarSection() {
     return (
         <Fragment>
             <SearchBar setCarName={setCarName} setSearchParams={setSearchParams}/>
-            <section id="Cars">
+            <section id="cars">
                 <div className="container">
                     <div className="row">
                         {
                             !loading ? (
-                                cars? (
+                                cars.length? (
                                     cars.map((car, index) => {
                                         return (
-                                            <div key={index} className="col-lg-4">                   
+                                            <div key={index} className="col-lg-4 col-md-6">                   
                                                 <div className="card p-3 d-flex flex-column justify-content-between" style={{height: '100%'}}>
                                                     <img src={car.image} alt="" style={{width: '100%'}} />
                                                     <p>{car.name}</p>
@@ -58,10 +58,10 @@ function CarSection() {
                                         )
                                     })
                                 ) : (
-                                    <h1>Mobil Tidak Ditemukan</h1>
+                                    <h2 className="text-center">Mobil Tidak Ditemukan</h2>
                                 )
                             ) : (
-                                <h1 className="text-center">Loading....</h1>
+                                <h2 className="text-center">Loading....</h2>
                             )
                         }
                     </div>
