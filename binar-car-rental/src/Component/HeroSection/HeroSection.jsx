@@ -1,11 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
-import { useRef } from 'react';
 import './HeroSection.css';
 
 
 
-function HeroSection() {
+function HeroSection({isButtonShow}) {
     const [sidebar, setSidebar] = useState('collapse');
 
     window.addEventListener('scroll', () => {
@@ -45,14 +44,16 @@ function HeroSection() {
                         <h1>Sewa & Rental Mobil Terbaik di kawasan (Lokasimu)</h1>
                         <p className="mt-4 mr-4">Selamat datang di Binar Car Rental. Kami menyediakan mobil kualitas terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu untuk sewa mobil selama 24 jam.</p>
                         <a href="/car" className="text-reset text-decoration-none">
-                            <button className="btn btn-success">
-                                Mulai Sewa Mobil
-                            </button>
+                            {
+                                isButtonShow && (
+                                <button className="btn btn-success">Mulai Sewa Mobil</button>)
+                            }
+                            
                         </a> 
                     </div>
                     <div className="col-lg-6">
                         <div className="car-background"></div>
-                        <img className="car-img" src="./Assets/car.png" alt="car"/>
+                        <img className="car-img" src="/Assets/car.png" alt="car"/>
                     </div>
                 </div>
             </div>

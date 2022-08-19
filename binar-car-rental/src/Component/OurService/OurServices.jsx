@@ -8,7 +8,9 @@ function OurServices() {
             <div className="container">
                 <div className="row border">
                     <div className="col-lg-6 d-flex justify-content-center">
-                        <img className="img-fluid person-img border" src="./Assets/person.png" alt="" />
+                        <div className=" d-flex justify-content-center">
+                            <img className="img-fluid person-img border" src="/Assets/person.png" alt="" />                 
+                        </div>                        
                         <div className="circle1"></div>
                         <div className="circle2"></div>
                         <div className="circle3"></div>

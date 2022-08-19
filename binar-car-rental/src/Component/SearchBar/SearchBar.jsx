@@ -2,7 +2,7 @@ import React from "react";
 
 
 
-function SearchBar({setCarName, setSearchParams}) { 
+function SearchBar({setCarName, setSearchParams, setCategory}) { 
     return (
         <section id="searchBar" className="mb-5" style={{marginTop: "-90px"}}>
             <div className="container d-flex justify-content-center">
@@ -12,12 +12,13 @@ function SearchBar({setCarName, setSearchParams}) {
                         <div className="row">
                             <div className="col-lg-3 d-flex flex-column justify-content-between">
                                 <label htmlFor="carName">Nama Mobil</label>
-                                <input className="p-2" type="text" id="carName" name="carName" style={{height: '35px'}} onChange={(e) => {setCarName(e.target.value); setSearchParams('')}}/>
+                                <input placeholder="Masukkan Nama Mobil" required className="p-2" type="text" id="carName" name="carName" style={{height: '35px'}} onChange={(e) => {setCarName(e.target.value); setSearchParams('')}}/>
                             </div>
 
                             <div className="col-lg-3 d-flex flex-column justify-content-between">
                                 <label htmlFor="category">Kategori</label>
-                                <select name="category" id="category" style={{height: '35px'}}>
+                                <select onChange={e => setCategory(e.target.value)} required className="p-2" name="category" id="category" style={{height: '35px'}}>
+                                    <option value="">Pilih Kapasitas Mobil</option>
                                     <option value="2 - 4 orang"> 2 - 4 orang</option>
                                     <option value="4 - 6 orang"> 4 - 6 orang</option>
                                     <option value="6 - 8 orang"> 6 - 8 orang</option>
@@ -26,7 +27,8 @@ function SearchBar({setCarName, setSearchParams}) {
 
                             <div className="col-lg-3 d-flex flex-column justify-content-between">
                                 <label htmlFor="price">Harga</label>
-                                <select className="p-1" name="price" id="price" style={{height: '35px'}}>
+                                <select required className="p-2" name="price" id="price" style={{height: '35px'}}>
+                                    <option value="">Pilih Harga Sewa per Hari</option>
                                     <option value="400000"> &#60; Rp. 400.000</option>
                                     <option value="400000-600000"> Rp. 400.000 - Rp.600.000</option>
                                     <option value="600000"> &#62; Rp. 600.000 </option>
@@ -35,7 +37,8 @@ function SearchBar({setCarName, setSearchParams}) {
 
                             <div className="col-lg-2 d-flex flex-column justify-content-between">
                                 <label htmlFor="status">Status</label>
-                                <select className="p-1" name="status" id="status" style={{height: '35px'}}>
+                                <select required className="p-2" name="status" id="status" style={{height: '35px'}}>
+                                    <option value="">Pilih Status</option>
                                     <option value="disewa">Disewa</option>
                                 </select>
                             </div>
@@ -44,8 +47,7 @@ function SearchBar({setCarName, setSearchParams}) {
                                 <button className="btn btn-success p-1" style={{width: "100%"}}>Cari</button>
                             </div>
                         </div>
-                    </form>
-                    
+                    </form>                    
                 </div>
             </div>
         </section>

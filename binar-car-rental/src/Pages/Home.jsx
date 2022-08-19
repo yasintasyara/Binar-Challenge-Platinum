@@ -11,7 +11,7 @@ import Testimonial from '../Component/Testimonial/Testimonial';
 function Home() {
   return (
     <Fragment>
-      <HeroSection />
+      <HeroSection isButtonShow={true} />
       <OurServices />
       <WhyUs />
       <Testimonial />

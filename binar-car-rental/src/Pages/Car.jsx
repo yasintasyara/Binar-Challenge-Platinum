@@ -1,13 +1,13 @@
 import React, { Fragment} from "react";
 import Footer from "../Component/Footer/Footer";
 import CarSection from "../Component/CarSection/CarSection";
-import HeroSection1 from "../Component/HeroSection/HeroSection1";
+import HeroSection from "../Component/HeroSection/HeroSection";
 
 
 function Car() {
     return (
         <Fragment>
-            <HeroSection1 />
+            <HeroSection isButtonShow={false}/>
             <CarSection />
             <Footer />
         </Fragment>

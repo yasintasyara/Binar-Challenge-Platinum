@@ -19,7 +19,6 @@ function App() {
             <Route index element={<Car />} />
             <Route path='search' element={<Search />} />
             <Route path=':id' element={<CarDetail />} />
-            <Route path='*' element={<NotFound />} />
           </Route>
         </Route>
         <Route path='*' element={<NotFound />} />

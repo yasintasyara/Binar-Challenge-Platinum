@@ -8,6 +8,7 @@ import SearchBar from "../SearchBar/SearchBar";
 function CarSection() {
     const [cars, setCars] = useState([]);
     const [carName, setCarName] = useState('');
+    const [carCategory, setCategory] = useState('');
     const [loading, setLoading] = useState(false);
     const [searchParams, setSearchParams] = useSearchParams();
     const carNameParams = searchParams.get('carName');
@@ -19,9 +20,17 @@ function CarSection() {
         try {
             const { data } = await axios.get('https://bootcamp-rent-car.herokuapp.com/admin/car/');
             if (carNameParams) {
-                setCars(data.filter((car) => { return car.name.toLowerCase() == carNameParams.toLowerCase() && car.category == category }))
+                setCars(data.filter(car => { 
+                    if (car.name && car.category) {
+                        return car.name.toLowerCase() == carNameParams.toLowerCase() && car.category == category
+                    }
+                }))
             } else if (carName) {
-                setCars(data.filter(car => {return car.name.toLowerCase().includes(carName.toLowerCase())}))
+                setCars(data.filter(car => {
+                    if (car.name) {
+                        return car.name.toLowerCase().includes(carName.toLowerCase());
+                    }
+                }))
             } else {
                 setCars(data)
             }
@@ -48,11 +57,14 @@ function CarSection() {
                                         return (
                                             <div key={index} className="col-lg-4 col-md-6">                   
                                                 <div className="card p-3 d-flex flex-column justify-content-between" style={{height: '100%'}}>
-                                                    <img src={car.image} alt="" style={{width: '100%'}} />
-                                                    <p>{car.name}</p>
-                                                    <h5>Rp {car.price.toLocaleString('en-US')}/ Hari</h5>
-                                                    <p className="fw-bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                                    <a href={`/car/${car.id}`} className="btn btn-success" style={{width:"100%"}}>Pilih Mobil</a>
+                                                    {car.image? (<img src={car.image} alt="" style={{width: '100%'}} /> ) : (<img src="/Assets/dummy.png" alt="" style={{width: '100%'}} /> )}                                             
+                                                    
+                                                    <div>
+                                                        <p>{car.name}</p>
+                                                        {car.price? (<h5>Rp {car.price.toLocaleString('en-US')}/ Hari</h5>) : (<h5>Rp. 0</h5>)}
+                                                        <p className="fw-bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                                        <a href={`/car/${car.id}`} className="btn btn-success" style={{width:"100%"}}>Pilih Mobil</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         )
