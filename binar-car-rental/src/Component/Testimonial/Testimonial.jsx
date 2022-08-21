@@ -1,7 +1,36 @@
 import React from "react";
+import { useState } from "react";
 
 
 function Testimonial() {
+    const [testimonial1, setTestimonial1] = useState('none');
+    const [testimonial2, setTestimonial2] = useState('flex');
+    const [testimonial3, setTestimonial3] = useState('none');
+
+    const handleNext = () => {
+        if (testimonial1 == 'flex') {
+            setTestimonial1('none');
+            setTestimonial2('flex');
+            setTestimonial3('none')
+        } else if (testimonial2 == 'flex') {
+            setTestimonial2('none');
+            setTestimonial3('flex');
+            setTestimonial1('none')
+        }
+    }
+
+    const handlePrevious = () => {
+        if (testimonial2 == 'flex') {
+            setTestimonial2('none');
+            setTestimonial1('flex');
+            setTestimonial3('none');
+        } else if (testimonial3 == 'flex') {
+            setTestimonial3('none');
+            setTestimonial2('flex');
+            setTestimonial1('none');
+        }
+    }
+
     return (
         <section id="testimonial">
                 <div className="container d-flex flex-column align-items-center">
@@ -9,11 +38,11 @@ function Testimonial() {
                     <p>Berbagai review positif dari para pelanggan kami</p>
                 </div>
 
-                <div className="d-flex justify-content-center">
-                    <div className="card d-flex p-3 border" style={{width: '619px', minHeight: '270px', backgroundColor: '#F1F3FF'}}>
-                        <div className="row align-items-center border" style={{height: '100%'}}>
+                <div className="d-flex justify-content-center mx-3" >
+                    <div className="card p-3" style={{width: '619px', minHeight: '270px', backgroundColor: '#F1F3FF', display: `${testimonial1}`}}>
+                        <div className="row align-items-center" style={{height: '100%'}}>
                             <div className="col-lg-3 d-flex align-items-center justify-content-center">
-                                <img src="./Assets/img_photo.png" alt="person" />
+                                <img src="./Assets/testimonial2.png" alt="person" />
                             </div>
                             <div className="col-lg-9">
                                 <div className="star my-3">
@@ -23,15 +52,15 @@ function Testimonial() {
                                     <i className="fa-solid fa-star" style={{color: '#F9CC00'}}></i>
                                     <i className="fa-solid fa-star" style={{color: '#F9CC00'}}></i>
                                 </div>
-                                <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod”</p>
-                                <p>John Dee 32, Bromo</p>
+                                <p>“Ini testimoni pertama. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod”</p>
+                                <p>Kharisma 32, Bromo</p>
                             </div>
                         </div>
                     </div>
-                    <div className="card p-3 d-flex border" style={{width: '619px', minHeight: '270px', backgroundColor: '#F1F3FF'}}>
-                        <div className="row d-flex align-items-center border" style={{height: '100%'}}>
+                    <div className="card p-3" style={{width: '619px', minHeight: '270px', backgroundColor: '#F1F3FF', display: `${testimonial2}`}}>
+                        <div className="row d-flex align-items-center" style={{height: '100%'}}>
                             <div className="col-lg-3 d-flex align-items-center justify-content-center">
-                                <img src="./Assets/img_photo.png" alt="person" />
+                                <img src="./Assets/testimonial1.png" alt="person" />
                             </div>
                             <div className="col-lg-9">
                             <div className="star my-3">
@@ -41,15 +70,15 @@ function Testimonial() {
                                     <i className="fa-solid fa-star" style={{color: '#F9CC00'}}></i>
                                     <i className="fa-solid fa-star" style={{color: '#F9CC00'}}></i>
                                 </div>
-                                <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod”</p>
-                                <p>John Dee 32, Bromo</p>
+                                <p>“Ini testimoni kedua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod”</p>
+                                <p>Pratama 32, Bromo</p>
                             </div>
                         </div>
                     </div>
-                    <div className="card p-3 d-flex" style={{width: '619px', minHeight: '270px', backgroundColor: '#F1F3FF'}}>
-                        <div className="row d-flex align-items-center border" style={{height: '100%'}}>
-                            <div className="col-lg-3 d-flex align-items-center justify-content-center border">
-                                <img src="./Assets/img_photo.png" alt="person" />
+                    <div className="card p-3" style={{width: '619px', minHeight: '270px', backgroundColor: '#F1F3FF', display: `${testimonial3}`}}>
+                        <div className="row d-flex align-items-center" style={{height: '100%'}}>
+                            <div className="col-lg-3 d-flex align-items-center justify-content-center">
+                                <img src="./Assets/testimonial2.png" alt="person" />
                             </div>
                             <div className="col-lg-9">
                             <div className="star my-3">
@@ -59,16 +88,16 @@ function Testimonial() {
                                     <i className="fa-solid fa-star" style={{color: '#F9CC00'}}></i>
                                     <i className="fa-solid fa-star" style={{color: '#F9CC00'}}></i>
                                 </div>
-                                <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod”</p>
-                                <p>John Dee 32, Bromo</p>
+                                <p>“Ini testimoni ketiga. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod”</p>
+                                <p>Ariq 32, Bromo</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div className="control container d-flex justify-content-center">
-                    <button className="btn btn-light my-3 mr-3" style={{border: 'gray solid 1px', borderRadius: '50%'}}>&#60;</button>
-                    <button className="btn my-3" style={{backgroundColor: '#5CB85F', borderRadius: '50%', color: 'white'}}>&#62;</button>
+                    <button onClick={handlePrevious} className="btn btn-light my-3 mr-3" style={{border: 'gray solid 1px', borderRadius: '50%'}}>&#60;</button>
+                    <button onClick={handleNext} className="btn my-3" style={{backgroundColor: '#5CB85F', borderRadius: '50%', color: 'white'}}>&#62;</button>
                 </div>
         </section>
     )

@@ -21,14 +21,12 @@ function CarSection() {
     const statusParams = searchParams.get('status')
     
 
-
     const handleLiveSearch = (data) => {
         const filteredData = data.filter((car) => {
-            if (carName && car.name && car.name.toLowerCase().includes(carName.toLowerCase())) {
+            if (car.name && car.name.toLowerCase().includes(carName.toLowerCase())) {
                 return true;
             }
-        }
-        )
+        })
         setCars(filteredData);
     }
 
@@ -36,13 +34,13 @@ function CarSection() {
         const checkPrice = (price) => {
             if (price < 400000 && priceParams == 'lt400') {
                 return true;
-            } else if (price >= 400000 && price <= 60000 && priceParams == '400-600') {
+            } else if (price >= 400000 && price <= 600000 && priceParams == '400-600') {
                 return true;
             } else if (price > 600000 && priceParams == 'gt600') {
                 return true;
             } else false;
         } 
-
+    
         const checkStatus = (status) => {
             if (status == false && statusParams == 'tersedia') {
                 return true;
@@ -67,10 +65,10 @@ function CarSection() {
             const { data } = await axios.get('https://bootcamp-rent-car.herokuapp.com/admin/car/');
             if (carNameParams){
                 handleSearchWithParams(data);
-            } else if (carName || carCategory) {
+            } else if (carName) {
                 handleLiveSearch(data);
             } else {
-                setCars(data)
+                setCars(data);
             }
         } catch (error) {
           console.log(error);
@@ -80,11 +78,11 @@ function CarSection() {
 
     useEffect(() => {
             loadCar();        
-    },[carName, carCategory, carPrice, carStatus])
+    },[carName, carNameParams, categoryParams, statusParams, priceParams])
 
     return (
         <Fragment>
-            <SearchBar setSearchParams={setSearchParams} carName={carName} setCarName={setCarName} carCategory={carCategory} setCarCategory={setCarCategory} carPrice={carPrice} setCarPrice={setCarPrice} carStatus={carStatus} setCarStatus={setCarStatus} loadCar={loadCar}/>
+            <SearchBar setSearchParams={setSearchParams} carName={carName} setCarName={setCarName} carCategory={carCategory} setCarCategory={setCarCategory} carPrice={carPrice} setCarPrice={setCarPrice} carStatus={carStatus} setCarStatus={setCarStatus} />
             <section id="cars">
                 <div className="container">
                     <div className="row">
@@ -99,7 +97,7 @@ function CarSection() {
                                                     
                                                     <div>
                                                         {car.name? (<p className="mt-3">{car.name}</p>) : (<p className="mt-3">Tidak ada nama</p>)}
-                                                        {car.price? (<h5>Rp {car.price.toLocaleString('en-US')}/ Hari</h5>) : (<h5>Rp. 0</h5>)}
+                                                        {car.price? (<h5>Rp {car.price.toLocaleString('en-US')}/ Hari</h5>) : (<h5>Tidak Ada Data</h5>)}
                                                         <p className="fw-bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  </p>
                                                         <a href={`/car/${car.id}`} className="btn btn-success" style={{width:"100%"}}>Pilih Mobil</a>
                                                     </div>

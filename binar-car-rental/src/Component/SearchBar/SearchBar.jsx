@@ -8,7 +8,7 @@ const useNavigateSearch = () => {
 }
 
 
-function SearchBar({loadCar, carName, setCarName, carCategory, setCarCategory, carPrice, setCarPrice, carStatus, setCarStatus, setSearchParams}) { 
+function SearchBar({carName, setCarName, carCategory, setCarCategory, carPrice, setCarPrice, carStatus, setCarStatus, setSearchParams}) { 
     const navigateSearch = useNavigateSearch();
     const goToSearch = () => navigateSearch('/search', {name: `${carName}`, category:`${carCategory}`, price:`${carPrice}`, status:`${carStatus}`});
     
@@ -16,7 +16,7 @@ function SearchBar({loadCar, carName, setCarName, carCategory, setCarCategory, c
         e.preventDefault();
         if (carName && carCategory && carPrice && carStatus) {
             goToSearch();
-            loadCar();
+
         } else alert('Semua Kolom Pencarian Harus Diisi');
     }
 
