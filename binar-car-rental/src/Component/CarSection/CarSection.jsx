@@ -7,30 +7,68 @@ import SearchBar from "../SearchBar/SearchBar";
 
 function CarSection() {
     const [cars, setCars] = useState([]);
-    const [carName, setCarName] = useState('');
-    const [carCategory, setCategory] = useState('');
     const [loading, setLoading] = useState(false);
+
+    const [carName, setCarName] = useState('');
+    const [carCategory, setCarCategory] = useState('');
+    const [carPrice, setCarPrice] = useState('');
+    const [carStatus, setCarStatus] = useState('');
+    
     const [searchParams, setSearchParams] = useSearchParams();
-    const carNameParams = searchParams.get('carName');
-    const category = searchParams.get('category');
-    const price = searchParams.get('price');
+    const carNameParams = searchParams.get('name');
+    const categoryParams = searchParams.get('category');
+    const priceParams = searchParams.get('price');
+    const statusParams = searchParams.get('status')
+    
+
+
+    const handleLiveSearch = (data) => {
+        const filteredData = data.filter((car) => {
+            if (carName && car.name && car.name.toLowerCase().includes(carName.toLowerCase())) {
+                return true;
+            }
+        }
+        )
+        setCars(filteredData);
+    }
+
+    const handleSearchWithParams = (data) => {
+        const checkPrice = (price) => {
+            if (price < 400000 && priceParams == 'lt400') {
+                return true;
+            } else if (price >= 400000 && price <= 60000 && priceParams == '400-600') {
+                return true;
+            } else if (price > 600000 && priceParams == 'gt600') {
+                return true;
+            } else false;
+        } 
+
+        const checkStatus = (status) => {
+            if (status == false && statusParams == 'tersedia') {
+                return true;
+            } if (status == true && statusParams == 'disewa') {
+                return true;
+            } else false;
+        }
+
+        const filteredData = data.filter((car) => {
+            if (car.name) {
+                return car.name.toLowerCase() == carNameParams.toLowerCase() && car.category == categoryParams && checkPrice(car.price) && checkStatus(car.status);
+            }
+        })
+
+        setCars(filteredData);
+    }
+    
 
     const loadCar = async () => {
         setLoading(true);
         try {
             const { data } = await axios.get('https://bootcamp-rent-car.herokuapp.com/admin/car/');
-            if (carNameParams) {
-                setCars(data.filter(car => { 
-                    if (car.name && car.category) {
-                        return car.name.toLowerCase() == carNameParams.toLowerCase() && car.category == category
-                    }
-                }))
-            } else if (carName) {
-                setCars(data.filter(car => {
-                    if (car.name) {
-                        return car.name.toLowerCase().includes(carName.toLowerCase());
-                    }
-                }))
+            if (carNameParams){
+                handleSearchWithParams(data);
+            } else if (carName || carCategory) {
+                handleLiveSearch(data);
             } else {
                 setCars(data)
             }
@@ -38,15 +76,15 @@ function CarSection() {
           console.log(error);
         }
         setLoading(false);
-      };
+    };
 
     useEffect(() => {
             loadCar();        
-    },[carName])
+    },[carName, carCategory, carPrice, carStatus])
 
     return (
         <Fragment>
-            <SearchBar setCarName={setCarName} setSearchParams={setSearchParams}/>
+            <SearchBar setSearchParams={setSearchParams} carName={carName} setCarName={setCarName} carCategory={carCategory} setCarCategory={setCarCategory} carPrice={carPrice} setCarPrice={setCarPrice} carStatus={carStatus} setCarStatus={setCarStatus} loadCar={loadCar}/>
             <section id="cars">
                 <div className="container">
                     <div className="row">
@@ -60,9 +98,9 @@ function CarSection() {
                                                     {car.image? (<img src={car.image} alt="" style={{width: '100%'}} /> ) : (<img src="/Assets/dummy.png" alt="" style={{width: '100%'}} /> )}                                             
                                                     
                                                     <div>
-                                                        <p>{car.name}</p>
+                                                        {car.name? (<p className="mt-3">{car.name}</p>) : (<p className="mt-3">Tidak ada nama</p>)}
                                                         {car.price? (<h5>Rp {car.price.toLocaleString('en-US')}/ Hari</h5>) : (<h5>Rp. 0</h5>)}
-                                                        <p className="fw-bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                                        <p className="fw-bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  </p>
                                                         <a href={`/car/${car.id}`} className="btn btn-success" style={{width:"100%"}}>Pilih Mobil</a>
                                                     </div>
                                                 </div>

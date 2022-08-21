@@ -1,12 +1,20 @@
 import React, {Fragment, useEffect, useState} from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import axios from "axios";
+import SearchBar from "../SearchBar/SearchBar";
 
 
 
 function CarDetailSection() {
     const [car, setCar] = useState();
     const [loading, setLoading] = useState(false);
+
+    const [carName, setCarName] = useState('');
+    const [carCategory, setCarCategory] = useState('');
+    const [carPrice, setCarPrice] = useState('');
+    const [carStatus, setCarStatus] = useState('');
+
+    const [searchParams, setSearchParams] = useSearchParams();
 
     let { id } = useParams();
 
@@ -28,6 +36,7 @@ function CarDetailSection() {
     
         return(
         <Fragment>
+            <SearchBar carName={carName} setCarName={setCarName} carCategory={carCategory} setCarCategory={setCarCategory} carPrice={carPrice} setCarPrice={setCarPrice} carStatus={carStatus} setCarStatus={setCarStatus} setSearchParams={setSearchParams}/>
             { !loading? (
                 car? (
                 <section className="mb-5" id="carDetail">
