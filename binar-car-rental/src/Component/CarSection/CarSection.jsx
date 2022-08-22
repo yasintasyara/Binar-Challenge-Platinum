@@ -22,6 +22,7 @@ function CarSection() {
     
 
     const handleLiveSearch = (data) => {
+        // livesearch cuma bisa pake nama mobil, parameter lainnya belum bisa.
         const filteredData = data.filter((car) => {
             if (car.name && car.name.toLowerCase().includes(carName.toLowerCase())) {
                 return true;
