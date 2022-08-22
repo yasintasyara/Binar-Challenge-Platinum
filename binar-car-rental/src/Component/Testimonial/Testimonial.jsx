@@ -39,7 +39,7 @@ function Testimonial() {
                 </div>
 
                 <div className="d-flex justify-content-center mx-3" >
-                    <div className="card p-3" style={{width: '619px', minHeight: '270px', backgroundColor: '#F1F3FF', display: `${testimonial1}`}}>
+                    <div className="card p-3 sm-p-5" style={{width: '619px', minHeight: '270px', backgroundColor: '#F1F3FF', display: `${testimonial1}`}}>
                         <div className="row align-items-center" style={{height: '100%'}}>
                             <div className="col-lg-3 d-flex align-items-center justify-content-center">
                                 <img src="./Assets/testimonial2.png" alt="person" />

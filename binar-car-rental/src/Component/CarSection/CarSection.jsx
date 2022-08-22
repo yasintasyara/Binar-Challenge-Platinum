@@ -77,7 +77,7 @@ function CarSection() {
     };
 
     useEffect(() => {
-            loadCar();        
+        loadCar();        
     },[carName, carNameParams, categoryParams, statusParams, priceParams])
 
     return (
