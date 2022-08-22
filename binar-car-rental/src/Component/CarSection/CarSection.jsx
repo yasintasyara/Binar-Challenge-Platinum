@@ -98,7 +98,7 @@ function CarSection() {
                                                     
                                                     <div>
                                                         {car.name? (<p className="mt-3">{car.name}</p>) : (<p className="mt-3">Tidak ada nama</p>)}
-                                                        {car.price? (<h5>Rp {car.price.toLocaleString('en-US')}/ Hari</h5>) : (<h5>Tidak Ada Data</h5>)}
+                                                        {car.price? (<h5>Rp {car.price.toLocaleString('en-US')}/ Hari</h5>) : (<h5>Tidak Ada Harga</h5>)}
                                                         <p className="fw-bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  </p>
                                                         <a href={`/car/${car.id}`} className="btn btn-success" style={{width:"100%"}}>Pilih Mobil</a>
                                                     </div>

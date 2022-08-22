@@ -81,7 +81,7 @@ function Testimonial() {
                                 <img src="./Assets/testimonial2.png" alt="person" />
                             </div>
                             <div className="col-lg-9">
-                            <div className="star my-3">
+                                <div className="star my-3">
                                     <i className="fa-solid fa-star" style={{color: '#F9CC00'}}></i>
                                     <i className="fa-solid fa-star" style={{color: '#F9CC00'}}></i>
                                     <i className="fa-solid fa-star" style={{color: '#F9CC00'}}></i>
