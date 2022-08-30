@@ -7,9 +7,8 @@ function OurServices() {
         <section id="ourServices" className="d-flex align-items-center">
             <div className="container">
                 <div className="row">
-                    <div className="col-lg-6 d-flex justify-content-center">
+                    <div className="col-lg-6 d-flex justify-content-center my-4">
                         <div className=" d-flex justify-content-center">
-                            
                             <img className="img-fluid person-img" src="/Assets/person.png" alt="person" />   
                             <div className="circle"></div>         
                         </div>                        
