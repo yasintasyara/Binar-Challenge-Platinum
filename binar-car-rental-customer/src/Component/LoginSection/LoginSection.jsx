@@ -12,14 +12,14 @@ function LoginSection() {
                         <div className="rectangle"></div>
                         <h1 className="w-100 my-4">Welcome Back!</h1>
                         <div className="form-group">
-                            <label htmlFor="exampleInputEmail1">Email*</label>
-                            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
+                            <label htmlFor="email">Email*</label>
+                            <input type="email" className="form-control" id="email" aria-describedby="emailHelp" placeholder="Masukkan Email"/>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="exampleInputPassword1">Password*</label>
-                            <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password"/>
+                            <label htmlFor="password">Password*</label>
+                            <input type="password" className="form-control" id="password" placeholder="Masukkan Password"/>
                         </div>
-                        <button type="submit" className="btn mt-3">Submit</button>
+                        <button type="submit" className="btn mt-3">Sign In</button>
                         <p className="mt-4 d-flex justify-content-center">Don’t have an account?<a href="/signup">Sign Up for Free</a></p>
                     </form>
                     </div>
