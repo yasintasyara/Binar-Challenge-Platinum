@@ -56,4 +56,16 @@
     }
 }
 
+@media only screen and (max-width: 370px){
+    #loginSection .leftside form {
+        width: 100%;
+    }
+
+    #loginSection .leftside form p {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 

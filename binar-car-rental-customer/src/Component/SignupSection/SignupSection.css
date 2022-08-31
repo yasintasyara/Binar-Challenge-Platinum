@@ -56,4 +56,15 @@
     }
 }
 
+@media only screen and (max-width: 370px){
+    #signupSection .leftside form {
+        width: 100%;
+    }
+
+    #signupSection .leftside form p {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
 
