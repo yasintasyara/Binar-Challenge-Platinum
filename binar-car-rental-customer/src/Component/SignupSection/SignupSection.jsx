@@ -25,7 +25,7 @@ function SignupSection() {
                             <input type="password" className="form-control" id="createPassword" placeholder="6+ Karakter"/>
                         </div>
                         <button type="submit" className="btn mt-3">Sign Up</button>
-                        <p className="mt-4 d-flex justify-content-center">Don’t have an account?<a href="/login">Sign In here</a></p>
+                        <p className="mt-4 d-flex justify-content-center">Already have an account?<a href="/login">Sign In here</a></p>
                     </form>
                     </div>
                     <div className="rightside col-lg-6 border d-none d-lg-flex">
