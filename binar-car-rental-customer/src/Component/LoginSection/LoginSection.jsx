@@ -7,7 +7,7 @@ function LoginSection() {
         <section id="loginSection" className="mb-0">
             <div className="container-fluid">
                 <div className="row min-vh-100">
-                    <div className="leftside col-lg-6 border d-flex flex-column justify-content-md-center align-items-center">
+                    <div className="leftside col-lg-6 border d-flex flex-column justify-content-sm-center align-items-center">
                     <form className="mx-3">
                         <div className="rectangle"></div>
                         <h1 className="w-100 my-4">Welcome Back!</h1>
