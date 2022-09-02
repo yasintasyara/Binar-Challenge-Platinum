@@ -2,10 +2,29 @@ import React from "react";
 import "./SignupSection.css";
 import * as Yup from 'yup'
 import { useFormik } from "formik";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 
 function SignupSection() {
+    const navigate = useNavigate();
+
+    const handleSubmit = async(values, actions) => {
+        try {
+            const response = await axios({
+                    method: "POST",
+                    url: "https://bootcamp-rent-car.herokuapp.com/customer/auth/register",
+                    data: values,
+            })
+            actions.setSubmitting(false);
+            actions.resetForm();
+            navigate('/login');
+        } catch (error) {
+            actions.setSubmitting(false);
+        }
+    }
+
     const signupSchema = Yup.object().shape({
         name: Yup.string()
         .required("Name is required")
@@ -26,8 +45,8 @@ function SignupSection() {
             password: '',
         },
         validationSchema: signupSchema,
-        onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+        onSubmit: (values, actions) => {
+            handleSubmit(values, actions)
         },
     })
     
