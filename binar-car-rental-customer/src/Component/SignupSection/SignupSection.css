@@ -1,3 +1,7 @@
+#signupSection {
+    font-weight: 400;
+}
+
 
 #signupSection .rightside {
     background-color: #0D28A6;
@@ -42,6 +46,12 @@
     width: 100px;
 }
 
+
+
+#signupSection .leftside form ::placeholder {
+    font-size: 14px;
+}
+
 #signupSection .leftside form button {
     background-color: #0D28A6;
     color: white;
@@ -58,6 +68,7 @@
 
 @media only screen and (max-width: 370px){
     #signupSection .leftside form {
+        margin-top: 25px;
         width: 100%;
     }
 

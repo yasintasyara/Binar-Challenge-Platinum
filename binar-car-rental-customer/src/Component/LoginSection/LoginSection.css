@@ -1,3 +1,7 @@
+#loginSection {
+    font-weight: 400;
+}
+
 
 #loginSection .rightside {
     background-color: #0D28A6;
@@ -40,6 +44,10 @@
     background-color: #CFD4ED;
     height: 34px;
     width: 100px;
+}
+
+#loginSection .leftside form ::placeholder {
+    font-size: 14px;
 }
 
 #loginSection .leftside form button {
