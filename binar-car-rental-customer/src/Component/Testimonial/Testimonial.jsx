@@ -97,8 +97,8 @@ function Testimonial() {
                 </div>
 
                 <div className="control container d-flex justify-content-center">
-                    <button onClick={handlePrevious} className="btn btn-light my-3 mr-3" style={{width: '44px', height: '44px', border: '#C4C4C4 solid 1px', borderRadius: '50%', fontSize: '22px'}}>&#60;</button>
-                    <button onClick={handleNext} className="btn btn-light my-3" style={{ width: '44px', height: '44px', border: '#C4C4C4 solid 1px', borderRadius: '50%', fontSize: '22px'}}>&#62;</button>
+                    <button onClick={handlePrevious} className="btn btn-light my-3 mr-3 d-flex justify-content-center align-items-center" style={{width: '44px', height: '44px', border: '#C4C4C4 solid 1px', borderRadius: '50%', fontSize: '22px'}}>&#60;</button>
+                    <button onClick={handleNext} className="btn btn-light my-3 d-flex justify-content-center align-items-center" style={{ width: '44px', height: '44px', border: '#C4C4C4 solid 1px', borderRadius: '50%', fontSize: '22px'}}>&#62;</button>
                 </div>
         </section>
     )
