@@ -19,12 +19,6 @@ function HeroSection({isButtonShow}) {
         navigate(0);
     }
 
-    const handleLogout = () => {
-        dispatch(authLogout());
-        alert('anda berhasil logout');
-        navigate(0);
-    }
-
     return (
         <section id="hero" style={{minHeight: '500px'}}>
             <nav className="navbar navbar-expand-lg navbar-light">
