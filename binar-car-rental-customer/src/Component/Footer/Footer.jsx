@@ -29,19 +29,19 @@ function Footer() {
                     <div className="col-lg-3 mb-3">
                         <p className="fw-bold">Connect with us</p>
                         <div className="connect-us d-flex">    
-                            <a href="#" className="mr-2 d-flex justify-content-center">
+                            <a href="#" className="mr-2 d-flex justify-content-center text-decoration-none">
                                 <i className="fa-brands fa-facebook p-2"></i>
                             </a>
-                            <a href="#" className="mr-2 d-flex justify-content-center">
+                            <a href="#" className="mr-2 d-flex justify-content-center text-decoration-none">
                                 <i className="fa-brands fa-instagram p-2"></i>
                             </a>
-                            <a href="#" className="mr-2 d-flex justify-content-center">
+                            <a href="#" className="mr-2 d-flex justify-content-center text-decoration-none">
                                 <i className="fa-brands fa-twitter p-2"></i>
                             </a>  
-                            <a href="#" className="mr-2 d-flex justify-content-center">
+                            <a href="#" className="mr-2 d-flex justify-content-center text-decoration-none">
                                 <i className="fa-solid fa-envelope p-2"></i>
                             </a>  
-                            <a href="#" className="mr-2 d-flex justify-content-center">
+                            <a href="#" className="mr-2 d-flex justify-content-center text-decoration-none">
                                 <i className="fa-regular fa-message p-2"></i>
                             </a>  
                         </div>

@@ -38,7 +38,7 @@ section {
     border-radius: 30% 0 0 0;
 }
 
-.btn-success {
+#hero .btn-success {
     width: 160px;
 }
 
