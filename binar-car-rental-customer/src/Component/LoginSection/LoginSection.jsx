@@ -1,23 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./LoginSection.css";
 import * as Yup from 'yup';
 import { useFormik } from "formik";
-import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { authLogin } from "../../Feature/Auth/auth-slice";
 
 
 function LoginSection() {
+    const navigate = useNavigate();
+    const dispatch = useDispatch()
+    const { isLoggedIn } = useSelector(state => {return state.auth});
+    const { message }  = useSelector(state => {return state.message});
+    const location = useLocation();
+
     const handleSubmit = async(values, actions) => {
         try {
-            const response = await axios({
-                    method: "POST",
-                    url: "https://bootcamp-rent-car.herokuapp.com/customer/auth/login",
-                    data: values,
-            })
+            const login = await dispatch(authLogin(values));
             actions.setSubmitting(false);
             actions.resetForm();
-            localStorage.setItem('ACCESS_TOKEN', response.data.access_token);
         } catch (error) {
+            console.log(error);
             actions.setSubmitting(false);
+            actions.resetForm();
         }
     }
 
@@ -39,9 +44,14 @@ function LoginSection() {
             handleSubmit(values, actions)
         },
     })
+    
+    useEffect(() => {
+        isLoggedIn && navigate('/');
+    })
 
     return (
         <section id="loginSection" className="mb-0">
+            {isLoggedIn === false && (
             <div className="container-fluid">
                 <div className="row min-vh-100">
                     <div className="leftside col-lg-6 d-flex flex-column justify-content-sm-center align-items-center">
@@ -77,6 +87,7 @@ function LoginSection() {
                             />
                             {formik.touched.password && formik.errors.password ? <div className="text-danger mt-1">{formik.errors.password}</div> : null}
                         </div>
+                        {message != 'berhasil login' && message != 'akun berhasil dibuat' && message != null ? <div className="alert alert-danger" role="alert">{message}</div> : message === 'akun berhasil dibuat' ? <div className="alert alert-success" role="alert">Akun berhasil dibuat, silahkan login</div> : null}
                         <button type="submit" className="btn mt-3">Sign In</button>
                         <p className="mt-4 d-flex justify-content-center">Don’t have an account?<a href="/signup">Sign Up for Free</a></p>
                     </form>
@@ -89,6 +100,8 @@ function LoginSection() {
                     </div>
                 </div>
             </div>
+            )}
+            
         </section>
     )
 }

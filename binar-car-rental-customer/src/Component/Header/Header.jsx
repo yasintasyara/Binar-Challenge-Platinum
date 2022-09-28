@@ -1,12 +1,24 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { authLogout } from "../../Feature/Auth/auth-slice";
 
 
 function Header() {
     const [sidebar, setSidebar] = useState('collapse');
+    const dispatch = useDispatch();
+    const { isLoggedIn } = useSelector(state => {return state.auth});
+    const navigate = useNavigate();
 
     window.addEventListener('scroll', () => {
         setSidebar('collapse');
     })
+
+    const handleLogout = () => {
+        dispatch(authLogout());
+        alert('anda berhasil logout');
+        navigate(0);
+    }
 
     return (
         <section id="hero" style={{minHeight: '200px'}}>
@@ -29,6 +41,12 @@ function Header() {
                             </li>
                             <li className="nav-item mr-3">
                                 <a className="nav-link" href="/#faq">FAQ</a>
+                            </li>
+                            <li className="nav-item mr-3">
+                            {isLoggedIn? 
+                                     <button className="nav-link btn bg-success text-light d-flex justify-content-center px-3" onClick={handleLogout}>Logout</button> :
+                                     <button className="nav-link btn bg-success text-light d-flex justify-content-center px-3" onClick={() => navigate('/signup')}>Register</button>
+                                }
                             </li>
                         </ul>
                     </div>

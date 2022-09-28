@@ -3,25 +3,28 @@ import "./SignupSection.css";
 import * as Yup from 'yup'
 import { useFormik } from "formik";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { authRegister } from "../../Feature/Auth/auth-slice";
 
 
 
 function SignupSection() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { isLoggedIn } = useSelector(state => {return state.auth});
+    const { message }  = useSelector(state => {return state.message});
 
     const handleSubmit = async(values, actions) => {
         try {
-            const response = await axios({
-                    method: "POST",
-                    url: "https://bootcamp-rent-car.herokuapp.com/customer/auth/register",
-                    data: values,
-            })
+            dispatch(authRegister(values))
             actions.setSubmitting(false);
             actions.resetForm();
-            navigate('/login');
         } catch (error) {
             actions.setSubmitting(false);
+            console.log(error);
+            actions.resetForm();
         }
     }
 
@@ -50,8 +53,13 @@ function SignupSection() {
         },
     })
     
+    useEffect(() => {
+        isLoggedIn && navigate('/');
+    })
+
     return (
         <section id="signupSection" className="mb-0">
+            {isLoggedIn === false && (
             <div className="container-fluid">
                 <div className="row min-vh-100">
                     <div className="leftside col-lg-6 d-flex flex-column justify-content-sm-center align-items-center">
@@ -101,8 +109,9 @@ function SignupSection() {
                             />
                             {formik.touched.password && formik.errors.password ? <div className="text-danger mt-1">{formik.errors.password}</div> : null}
                         </div>
+                        {message != null && message != 'akun berhasil dibuat' ? <div className="alert alert-danger" role="alert">{message}</div> : message === 'akun berhasil dibuat'? navigate('/login') : null}
                         <button type="submit" className="btn mt-3">Sign Up</button>
-                        <p className="mt-4 d-flex justify-content-center">Already have an account?<a href="/login">Sign In here</a></p>
+                        <p className="mt-4 d-flex justify-content-center">Already have an account?<Link to={'/login'}>Sign In here</Link></p>
                     </form>
                     </div>
                     <div className="rightside col-lg-6 d-none d-lg-flex">
@@ -113,6 +122,8 @@ function SignupSection() {
                     </div>
                 </div>
             </div>
+            )}
+            
         </section>
     )
 }

@@ -44,7 +44,7 @@ function CarDetailSection() {
                         <div className="row d-flex flex-row-reverse justify-content-evenly mx-1">
                             <div className="col-lg-4">
                                 <div className=" row card p-3 d">
-                                    <div className="col-12 p-5">
+                                    <div className="col-12 p-3">
                                     {car.image? (<img src={car.image} alt="" style={{width: '100%'}} /> ) : (<img src="/Assets/dummy.png" alt="" style={{width: '100%'}} /> )} 
                                     </div>
                                     <div>
