@@ -59,7 +59,7 @@ section {
         margin-left: 1rem;
         z-index: 100;
         line-height: 40px;
-        padding: 90px 0 0 30px;
+        padding: 90px 0 0 10%;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
