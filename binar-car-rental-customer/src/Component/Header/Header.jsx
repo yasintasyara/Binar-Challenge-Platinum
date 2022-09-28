@@ -25,11 +25,12 @@ function Header() {
             <nav className="navbar navbar-expand-lg navbar-light">
                 <div className="container mt-3">
                     <a className="navbar-brand text-light px-3 ml-3" href="/">BinarRent</a>
-                    <button onClick={() => sidebar == 'collapse'? setSidebar(null): setSidebar('collapse')} style={{zIndex: '3'}} className="navbar-toggler" type="button">
+                    <button onClick={() => setSidebar('show')} className="navbar-toggler" type="button">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className={`navbar-collapse ${sidebar}`} id='navbarNav'>
                         <ul className="navbar-nav ml-auto mr-5">
+                            <button onClick={() => setSidebar('')} className= "close-navbar" type='button'>✕</button>
                             <li className="nav-item mr-3">
                                 <a className="nav-link" href="/#ourServices">Our Services</a>
                             </li>

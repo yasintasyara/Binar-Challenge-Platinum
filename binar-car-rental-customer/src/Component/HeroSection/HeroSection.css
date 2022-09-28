@@ -18,6 +18,10 @@ section {
     outline: none;
 }
 
+.close-navbar {
+    display: none;
+}
+
 .car-img {
     width: 100%;
     transform: scaleX(-1);
@@ -44,26 +48,66 @@ section {
 
 
 @media screen and (width < 992px) {
-    .navbar-collapse {
-        width: 50%;
+    .navbar-collapse.show {
+        width: 70%;
         height: 100%;
         background-color: white;
         position: fixed;
+        animation: slideIn 0.5s ease-in;
         right: 0;
         top: 0;
         margin-left: 1rem;
-        z-index: 2;
-        line-height: 30px;
-        padding: 35px 0 0 30px;
+        z-index: 100;
+        line-height: 40px;
+        padding: 90px 0 0 30px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-collapse {
+        width: 70%;
+        height: 100%;
+        background-color: white;
+        position: fixed;
+        animation: slideOut 0.5s ease-out;
+        right: -400px;
+        top: 0;
+        margin-left: 1rem;
+        z-index: 100;
+        line-height: 40px;
+        padding: 90px 0 0 30px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes slideIn {
+        0% { right: -400px};
+        100% {right: 0};
+    }
+
+    @keyframes slideOut {
+        0% { right: 0;}
+        100% {right: -400px;}
     }
 
     .navbar-collapse::before {
         content: 'BCR';
+        font-size: 22px;
         font-weight: bold;
+        position: absolute;
+        top: 30px;
     }
-    
-    .navbar-toggler {
-        z-index: 3;
+
+    button.close-navbar {
+        position: absolute;
+        display: flex;
+        top: 25px;
+        right: 1%;
+        width: 44px;
+        height: 44px;
+        border: none;
+        background-color: transparent;
+        font-size: 26px;
+        color: gray;
+        cursor: pointer;
     }
 }
 
