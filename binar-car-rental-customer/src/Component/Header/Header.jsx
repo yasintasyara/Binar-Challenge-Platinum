@@ -10,10 +10,6 @@ function Header() {
     const { isLoggedIn } = useSelector(state => {return state.auth});
     const navigate = useNavigate();
 
-    window.addEventListener('scroll', () => {
-        setSidebar('collapse');
-    })
-
     const handleLogout = () => {
         dispatch(authLogout());
         alert('anda berhasil logout');
@@ -25,12 +21,13 @@ function Header() {
             <nav className="navbar navbar-expand-lg navbar-light">
                 <div className="container mt-3">
                     <a className="navbar-brand text-light px-3 ml-3" href="/">BinarRent</a>
-                    <button onClick={() => setSidebar('show')} className="navbar-toggler" type="button">
+                    <button onClick={() => setSidebar('show')} className="navbar-toggler" type="button"  aria-label='open sidebar'>
                         <span className="navbar-toggler-icon"></span>
                     </button>
+                    <div className={`sidebar-background ${sidebar}`} onClick={() => setSidebar('')}></div>
                     <div className={`navbar-collapse ${sidebar}`} id='navbarNav'>
+                        <button onClick={() => setSidebar('')} className= "close-navbar" type='button' aria-label='close sidebar'>✕</button>
                         <ul className="navbar-nav ml-auto mr-5">
-                            <button onClick={() => setSidebar('')} className= "close-navbar" type='button'>✕</button>
                             <li className="nav-item mr-3">
                                 <a className="nav-link" href="/#ourServices">Our Services</a>
                             </li>
