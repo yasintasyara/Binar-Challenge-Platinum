@@ -56,7 +56,7 @@ function LoginSection() {
                 <div className="row min-vh-100">
                     <div className="leftside col-lg-6 d-flex flex-column justify-content-sm-center align-items-center">
                     <form className="mx-3" onSubmit={formik.handleSubmit}>
-                        <div className="rectangle"></div>
+                    <a href="/" className="text-decoration-none"><div className="rectangle d-flex justify-content-center align-items-center font-weight-bold text-dark">BCR</div></a>
                         <h1 className="w-100 my-4">Welcome Back!</h1>
                         <div className="form-group">
                             <label htmlFor="email">Email*</label>
