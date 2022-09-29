@@ -98,7 +98,7 @@ section {
 
     button.close-navbar {
         position: absolute;
-        display: flex;
+        display: none;
         top: 25px;
         right: 5%;
         width: 44px;
@@ -109,7 +109,7 @@ section {
         color: gray;
         cursor: pointer;
     }
-
+    
     .sidebar-background.show {
         display: flex;
         animation: backgroundSidebar 0.3s ease-out;
@@ -130,6 +130,10 @@ section {
 
     .sidebar-background {
         display: none;
+    }
+
+    button.close-navbar.show {
+        display: flex;
     }
 }
 
