@@ -31,6 +31,7 @@ function HeroSection({isButtonShow}) {
                     <div className={`navbar-collapse ${sidebar}`} id='navbarNav'>
                         <button onClick={() => setSidebar('')} className= {`close-navbar ${sidebar} d-flex justify-content-center align-items-center`} type='button' aria-label='close sidebar'>✕</button>
                         <ul className="navbar-nav ml-auto mr-5">
+                            <button onClick={() => setSidebar('')} className= {`close-navbar ${sidebar}`} type='button' aria-label='close sidebar'>✕</button>
                             <li className="nav-item mr-3">
                                 <a className="nav-link" href="/#ourServices">Our Services</a>
                             </li>
