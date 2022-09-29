@@ -109,7 +109,7 @@ section {
         color: gray;
         cursor: pointer;
     }
-    
+
     .sidebar-background.show {
         display: flex;
         animation: backgroundSidebar 0.3s ease-out;
