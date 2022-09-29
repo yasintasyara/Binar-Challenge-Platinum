@@ -49,7 +49,7 @@ section {
 
 @media screen and (width < 992px) {
     .navbar-collapse.show {
-        width: 235px;
+        width: 245px;
         height: 100%;
         background-color: white;
         position: fixed;
@@ -64,7 +64,7 @@ section {
     }
 
     .navbar-collapse {
-        width: 235px;
+        width: 245px;
         height: 100%;
         background-color: white;
         position: fixed;
