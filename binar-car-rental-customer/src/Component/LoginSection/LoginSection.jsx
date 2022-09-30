@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./LoginSection.css";
 import * as Yup from 'yup';
 import { useFormik } from "formik";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { authLogin } from "../../Feature/Auth/auth-slice";
 
@@ -12,7 +12,6 @@ function LoginSection() {
     const dispatch = useDispatch()
     const { isLoggedIn } = useSelector(state => {return state.auth});
     const { message }  = useSelector(state => {return state.message});
-    const location = useLocation();
 
     const handleSubmit = async(values, actions) => {
         try {
