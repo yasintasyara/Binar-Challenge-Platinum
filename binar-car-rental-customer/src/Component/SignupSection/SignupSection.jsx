@@ -111,7 +111,7 @@ function SignupSection() {
                         </div>
                         {message != null && message != 'akun berhasil dibuat' ? <div className="alert alert-danger" role="alert">{message}</div> : message === 'akun berhasil dibuat'? navigate('/login') : null}
                         <button type="submit" className="btn mt-3">Sign Up</button>
-                        <p className="mt-4 d-flex justify-content-center">Already have an account?<Link to={'/login'}>Sign In here</Link></p>
+                        <p className="mt-4 d-flex justify-content-center">Already have an account?<a href="/login">Sign In here</a></p>
                     </form>
                     </div>
                     <div className="rightside col-lg-6 d-none d-lg-flex">
