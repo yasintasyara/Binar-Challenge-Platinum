@@ -5,6 +5,7 @@ import Home from './Pages/Home';
 import NotFound from './Pages/NotFound';
 import Car from './Pages/Car';
 import CarDetail from './Pages/CarDetail';
+import Payment from './Pages/Payment';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Search from './Pages/Search'
 
@@ -18,8 +19,10 @@ function App() {
           <Route path='car'>
             <Route index element={<Car />} />
             <Route path=':id' element={<CarDetail />} />
+            <Route path='payment' element={<Payment/>}/>
           </Route>
           <Route path='search' element={<Search />} />
+          <Route path='payment' element={<Payment/>}/>
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>
