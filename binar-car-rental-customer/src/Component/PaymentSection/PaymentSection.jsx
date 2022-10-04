@@ -2,8 +2,6 @@ import React from "react";
 import MyTimer from "./Timer";
 
 
-export const copy
-
 const PaymentSection = () => {
   return (
     <section className="mb-5" id="carDetail">
