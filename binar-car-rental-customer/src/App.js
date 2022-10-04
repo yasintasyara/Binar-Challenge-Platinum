@@ -8,6 +8,8 @@ import CarDetail from './Pages/CarDetail';
 import Payment from './Pages/Payment';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Search from './Pages/Search'
+import Login from './Pages/Login';
+import Signup from './Pages/Signup';
 
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
           </Route>
           <Route path='search' element={<Search />} />
           <Route path='payment' element={<Payment/>}/>
+          <Route path='login' element={<Login />} />
+          <Route path='signup' element={<Signup />} />
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>
