@@ -69,6 +69,7 @@ function LoginSection() {
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 value={formik.values.email}
+                                style={formik.errors.email && formik.touched.email && {border: 'red 1px solid'}}
                             />
                             {formik.touched.email && formik.errors.email ? <div className="text-danger mt-1">{formik.errors.email}</div> : null}
                         </div>
@@ -83,6 +84,7 @@ function LoginSection() {
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 value={formik.values.password} 
+                                style={formik.errors.password && formik.touched.password && {border: 'red 1px solid'}}
                             />
                             {formik.touched.password && formik.errors.password ? <div className="text-danger mt-1">{formik.errors.password}</div> : null}
                         </div>
