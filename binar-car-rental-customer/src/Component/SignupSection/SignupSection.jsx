@@ -2,8 +2,7 @@ import React from "react";
 import "./SignupSection.css";
 import * as Yup from 'yup'
 import { useFormik } from "formik";
-import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authRegister } from "../../Feature/Auth/auth-slice";
@@ -77,7 +76,8 @@ function SignupSection() {
                                 type="text"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
-                                value={formik.values.name} 
+                                value={formik.values.name}
+                                style={formik.errors.name && formik.touched.name && {border: 'red 1px solid'}} 
                             />
                             {formik.touched.name && formik.errors.name ? <div className="text-danger mt-1">{formik.errors.name}</div> : null}
                         </div>
@@ -92,6 +92,7 @@ function SignupSection() {
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 value={formik.values.email}
+                                style={formik.errors.email && formik.touched.email && {border: 'red 1px solid'}}
                             />
                             {formik.touched.email && formik.errors.email ? <div className="text-danger mt-1">{formik.errors.email}</div> : null}
                         </div>
@@ -106,6 +107,7 @@ function SignupSection() {
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                                 value={formik.values.password}
+                                style={formik.errors.password && formik.touched.password && {border: 'red 1px solid'}}
                             />
                             {formik.touched.password && formik.errors.password ? <div className="text-danger mt-1">{formik.errors.password}</div> : null}
                         </div>
