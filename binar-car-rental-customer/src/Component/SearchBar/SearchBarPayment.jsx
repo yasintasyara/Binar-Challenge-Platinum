@@ -1,160 +1,109 @@
 import React from "react";
 import { createSearchParams, useNavigate } from "react-router-dom";
-import './style.css';
+import "./style.css";
 
-    const useNavigateSearch = () => {
-    const navigate = useNavigate();
-    return (pathName, params) =>
-        navigate(`${pathName}?${createSearchParams(params)}`);
-    };
+const useNavigateSearch = () => {
+  const navigate = useNavigate();
+  return (pathName, params) =>
+    navigate(`${pathName}?${createSearchParams(params)}`);
+};
 
-    function SearchBarPayment({
-    carName,
-    setCarName,
-    carCategory,
-    setCarCategory,
-    carPrice,
-    setCarPrice,
-    carStatus,
-    setCarStatus,
-    setSearchParams,
-    }) {
-    const navigateSearch = useNavigateSearch();
-    const goToSearch = () =>
-        navigateSearch("/search", {
-        name: `${carName}`,
-        category: `${carCategory}`,
-        price: `${carPrice}`,
-        status: `${carStatus}`,
-        });
+function SearchBarPayment({
+  carName,
+  setCarName,
+  carCategory,
+  setCarCategory,
+  carPrice,
+  setCarPrice,
+  carStatus,
+  setCarStatus,
+  setSearchParams,
+}) {
+  const navigateSearch = useNavigateSearch();
+  const goToSearch = () =>
+    navigateSearch("/search", {
+      name: `${carName}`,
+      category: `${carCategory}`,
+      price: `${carPrice}`,
+      status: `${carStatus}`,
+    });
 
-    const handleOnClick = (e) => {
-        e.preventDefault();
-        if (carName && carCategory && carPrice && carStatus) {
-        goToSearch();
-        } else alert("Semua Kolom Pencarian Harus Diisi");
-    };
+  const handleOnClick = (e) => {
+    e.preventDefault();
+    if (carName && carCategory && carPrice && carStatus) {
+      goToSearch();
+    } else alert("Semua Kolom Pencarian Harus Diisi");
+  };
 
-    return (
+  return (
     <section
-        id="searchBarPayment"
-        className="mb-5"
-        style={{ marginTop: "-120px" }}
+      id="searchBarPayment"
+      className="mb-5 container "
+      style={{ marginTop: "-120px" }}
+    >
+      <div className="section-step ">
+        <ul className="stepper stepper-horizontal">
+          <li className="completed">
+            <img src="/Assets/1.png" alt="" />
+            <span className="label">Pilih Metode</span>
+          </li>
+
+          <li className="active">
+            <img src="/Assets/step.png" alt="" />
+            <img src="/Assets/2.png" alt="" />
+            <span className="label">Bayar</span>
+          </li>
+
+          <li className="warning">
+            <img src="/Assets/step.png" alt="" />
+            <img src="/Assets/3.png" alt="" />
+            <span className="label">Tiket</span>
+          </li>
+        </ul>
+      </div>
+      <div className=" d-flex justify-content-center">
+        <div className="row"></div>
+
+        <div
+          className="card p-3"
+          style={{ boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)", width: "100%" }}
         >
-            <div className="col-sm-12 section-step" >
-                <ul  className="stepper stepper-horizontal">
-                <li className="completed">
-                    <img src="/Assets/1.png" alt="" />
-                    <span className="label">Pilih Metode</span>
-                </li>
-
-                <li className="active">
-                    <img src="/Assets/step.png" alt="" />
-                    <img src="/Assets/2.png" alt="" />
-                    <span className="label">Bayar</span>
-                </li>
-
-                <li className="warning">
-                    <img src="/Assets/step.png" alt="" />
-                    <img src="/Assets/3.png" alt="" />    
-                    <span className="label">Tiket</span>
-                </li>
-                </ul>
-            </div>
-        <div className="container d-flex justify-content-center">
-            <div className="row">
-            
-            </div>
-
-            <div
-            className="card p-3"
-            style={{ boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)", width: "100%" }}
-            >
-            <h4>Pencarian</h4>
-            <form>
-                <div className="row">
-                <div className="col-lg-3 d-flex flex-column justify-content-center">
-                    <label htmlFor="name">Nama Mobil</label>
-                    {/* <input
-                    placeholder="Masukkan Nama Mobil"
-                    required
-                    className="p-2"
-                    type="text"
-                    id="name"
-                    name="name"
-                    style={{ height: "35px" }}
-                    onChange={(e) => {
-                        setCarName(e.target.value);
-                        setSearchParams("");
-                    }}
-                    /> */}
+          <h4>Detail Pesananmu</h4>
+            <div className="row mt-3">
+              <div className="col-lg-3 d-flex flex-column justify-content-center">
+                <label htmlFor="name">Nama/Tipe Mobil</label>
+                <div className="text-secondary">
+                    Innova
                 </div>
+              </div>
 
-                <div className="col-lg-3 d-flex flex-column justify-content-center">
-                    <label htmlFor="category">Kategori</label>
-                    {/* <select
-                    onChange={(e) => setCarCategory(e.target.value)}
-                    required
-                    className="p-2"
-                    name="category"
-                    id="category"
-                    style={{ height: "35px" }}
-                    >
-                    <option value="">Pilih Kapasitas Mobil</option>
-                    <option value="2 - 4 orang"> 2 - 4 orang</option>
-                    <option value="4 - 6 orang"> 4 - 6 orang</option>
-                    <option value="6 - 8 orang"> 6 - 8 orang</option>
-                    </select> */}
+              <div className="col-lg-3 d-flex flex-column justify-content-center">
+                <label htmlFor="category">Kategori</label>
+                <div className="text-secondary">
+                    6 - 8 orang
                 </div>
+              </div>
 
-                <div className="col-lg-3 d-flex flex-column justify-content-center">
-                    <label htmlFor="price">Harga</label>
-                    {/* <select
-                    onChange={(e) => setCarPrice(e.target.value)}
-                    required
-                    className="p-2"
-                    name="price"
-                    id="price"
-                    style={{ height: "35px" }}
-                    >
-                    <option value="">Pilih Harga Sewa per Hari</option>
-                    <option value="lt400"> &#60; Rp. 400.000</option>
-                    <option value="400-600"> Rp. 400.000 - Rp.600.000</option>
-                    <option value="gt600"> &#62; Rp. 600.000 </option>
-                    </select> */}
+              <div className="col-lg-3 d-flex flex-column justify-content-center">
+                <label htmlFor="price">Tanggal Mulai Sewa</label>
+                <div className="text-secondary">
+                    2 Juni 2022
                 </div>
+              </div>
 
-                <div className="col-lg-2 d-flex flex-column justify-content-center">
-                    <label htmlFor="status">Status</label>
-                    {/* <select
-                    onChange={(e) => setCarStatus(e.target.value)}
-                    required
-                    className="p-2"
-                    name="status"
-                    id="status"
-                    style={{ height: "35px" }}
-                    >
-                    <option value="">Pilih Status</option>
-                    <option value="disewa">Disewa</option>
-                    <option value="tersedia">Tersedia</option>
-                    </select> */}
+              <div className="col-lg-2 d-flex flex-column justify-content-center">
+                <label htmlFor="status">Tanggal Akhir Sewa</label>
+                <div className="text-secondary">    
+                    8 Juni 2022
                 </div>
+              </div>
 
-                <div className="col-lg-1 d-flex align-items-end">
-                    {/* <button
-                    onClick={handleOnClick}
-                    className="btn btn-success p-1"
-                    style={{ width: "100%" }}
-                    >
-                    Cari
-                    </button> */}
-                </div>
-                </div>
-            </form>
+              <div className="col-lg-1 d-flex align-items-end"></div>
             </div>
         </div>
-        </section>
-    );
+      </div>
+    </section>
+  );
 }
 
 export default SearchBarPayment;
