@@ -5,40 +5,27 @@ import "./detailPayment.css";
 import axios from "axios";
 import { useEffect } from "react";
 
-const API_URL = "https://bootcamp-rent-car.herokuapp.com/customer/order";
+const API_URL = "https://bootcamp-rent-car.herokuapp.com";
 const getLocalStorage = JSON.parse(localStorage.getItem("user"));
 function DetailPaymentSection() {
-  const [isActive, setIsActive] = useState(false);
-  const [isActive2, setIsActive2] = useState(false);
-  const [isActive3, setIsActive3] = useState(false);
+  const [isActive, setIsActive] = useState({ type: "", active: false });
   const [detailCar, setDetailCar] = useState({});
   const [detailOrder, setDetailOrder] = useState({});
 
   const [loading, setLoading] = useState(false);
 
-
-  const handleClick = () => {
-    setIsActive((current) => !current);
-    setIsActive2(false);
-    setIsActive3(false);
-  };
-
-  const handleClick2 = () => {
-    setIsActive2((current) => !current);
-    setIsActive(false);
-    setIsActive3(false);
-  };
-
-  const handleClick3 = () => {
-    setIsActive3((current) => !current);
-    setIsActive2(false);
-    setIsActive(false);
+  const handleClick = (type) => {
+    if (type == "BNI") {
+      setIsActive(() => ({  type, active: true }));
+    } else if (type == "BCA") {
+      setIsActive(() => ({  type, active: true }));
+    } else if (type == "Mandiri") {
+      setIsActive(() => ({  type, active: true }));
+    }
   };
 
   const checkButtonPayment = () => {
-    return isActive == true || isActive2 == true || isActive3 == true
-      ? false
-      : true;
+    return isActive.active == true ? false : true;
   };
 
   const config = {
@@ -48,9 +35,10 @@ function DetailPaymentSection() {
   const getDetailCar = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`${API_URL}/328`, config);
+      const res = await axios.get(`${API_URL}/admin/order/337`, config);
+      const res2 = await axios.get(`${API_URL}/admin/car/${res.data.CarId}`);
       setDetailOrder(res.data);
-      setDetailCar(res.data.Car);
+      setDetailCar(res2.data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -62,7 +50,6 @@ function DetailPaymentSection() {
     getDetailCar();
   }, []);
 
- 
   const findDayDifference = (startDate, endDate) => {
     const DAY_UNIT_IN_MILLISECONDS = 24 * 3600 * 1000;
     const diffMiliSeconds =
@@ -78,7 +65,7 @@ function DetailPaymentSection() {
   };
 
   if (loading) {
-    return
+    return;
   } else {
     return (
       <>
@@ -98,9 +85,11 @@ function DetailPaymentSection() {
                 >
                   <li className="list-group-item flex">
                     <button
-                      onClick={handleClick}
+                      onClick={() => handleClick("BCA")}
                       className={
-                        isActive ? "button-bank active" : "button-bank"
+                        isActive.type == "BCA" && isActive.type
+                          ? "button-bank active"
+                          : "button-bank"
                       }
                     >
                       <div className="d-flex align-items-center">
@@ -111,9 +100,11 @@ function DetailPaymentSection() {
                   </li>
                   <li className="list-group-item ">
                     <button
-                      onClick={handleClick2}
+                      onClick={() => handleClick("BNI")}
                       className={
-                        isActive2 ? "button-bank active" : "button-bank"
+                        isActive.type == "BNI" && isActive.type
+                          ? "button-bank active"
+                          : "button-bank"
                       }
                     >
                       <div className="d-flex align-items-center">
@@ -124,9 +115,11 @@ function DetailPaymentSection() {
                   </li>
                   <li className="list-group-item">
                     <button
-                      onClick={handleClick3}
+                      onClick={() => handleClick("Mandiri")}
                       className={
-                        isActive3 ? "button-bank active" : "button-bank"
+                        isActive.type == "Mandiri" && isActive.type
+                          ? "button-bank active"
+                          : "button-bank"
                       }
                     >
                       <div className="d-flex align-items-center">
