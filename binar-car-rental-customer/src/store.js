@@ -1,12 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from './Feature/Auth/auth-slice';
 import messageReducer from './Feature/Auth/message-slice';
-
+import carsReducer from './Feature/Cars/cars-slice';
+import ordersReducer from './Feature/Orders/order-slice';
 
 export default configureStore({
     reducer: {
         auth: authReducer,
         message: messageReducer,
+        cars : carsReducer,
+        orders : ordersReducer
     },
     middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
