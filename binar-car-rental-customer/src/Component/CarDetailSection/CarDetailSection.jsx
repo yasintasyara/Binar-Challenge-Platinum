@@ -2,12 +2,15 @@ import React, {Fragment, useEffect, useState} from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import axios from "axios";
 import SearchBar from "../SearchBar/SearchBar";
+import { useDispatch, useSelector } from "react-redux";
+import { getCarById } from "../../Feature/Cars/cars-slice";
 
 
 
 function CarDetailSection() {
-    const [car, setCar] = useState();
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const dispatch = useDispatch();
+    const car = useSelector(state => {return state.cars.detailCar});
 
     const [carName, setCarName] = useState('');
     const [carCategory, setCarCategory] = useState('');
@@ -19,10 +22,10 @@ function CarDetailSection() {
     let { id } = useParams();
 
     const loadCarDetail = async () => {
-        setLoading(true);
         try {
-            const { data } = await axios.get(`https://bootcamp-rent-car.herokuapp.com/admin/car/${id}`);
-            setCar(data);
+            await dispatch(getCarById({id}));
+            setLoading(false);
+            
         } catch (error) {
             console.log(error);
         }
