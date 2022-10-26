@@ -1,13 +1,19 @@
 import axios from "axios";
 import React, { Fragment, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
+import { getAllCars } from "../../Feature/Cars/cars-slice";
 import SearchBar from "../SearchBar/SearchBar";
 
 
 
 function CarSection() {
-    const [cars, setCars] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const dispatch = useDispatch();
+    const cars = useSelector(state => {return state.cars.listCars.cars});
+    console.log(cars);
+
+    // const [cars, setCars] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const [carName, setCarName] = useState('');
     const [carCategory, setCarCategory] = useState('');
@@ -61,25 +67,19 @@ function CarSection() {
     
 
     const loadCar = async () => {
-        setLoading(true);
         try {
-            const { data } = await axios.get('https://bootcamp-rent-car.herokuapp.com/admin/car/');
-            if (carNameParams){
-                handleSearchWithParams(data);
-            } else if (carName) {
-                handleLiveSearch(data);
-            } else {
-                setCars(data);
-            }
+            await dispatch(getAllCars());
+            setLoading(false);
         } catch (error) {
-          console.log(error);
+            console.log(error);
+            setLoading(false);
         }
-        setLoading(false);
+        
     };
 
     useEffect(() => {
         loadCar();        
-    },[carName, carNameParams, categoryParams, statusParams, priceParams])
+    },[])
 
     return (
         <Fragment>
