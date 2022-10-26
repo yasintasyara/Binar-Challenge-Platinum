@@ -10,6 +10,7 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Search from './Pages/Search'
 import Login from './Pages/Login';
 import Signup from './Pages/Signup';
+import E_Tiket from './Pages/E_Tiket';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route index element={<Car />} />
             <Route path=':id' element={<CarDetail />} />
             <Route path='payment' element={<Payment/>}/>
+            <Route path='etiket' element={<E_Tiket />} />
           </Route>
           <Route path='search' element={<Search />} />
           <Route path='payment'>
