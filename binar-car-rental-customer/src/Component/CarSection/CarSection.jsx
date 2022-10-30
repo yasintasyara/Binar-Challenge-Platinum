@@ -10,9 +10,8 @@ import SearchBar from "../SearchBar/SearchBar";
 function CarSection() {
     const dispatch = useDispatch();
     const cars = useSelector(state => {return state.cars.listCars.cars});
-    console.log(cars);
+    const pageCount = useSelector(state => {return state.cars.listCars.pageCount});
 
-    // const [cars, setCars] = useState([]);
     const [loading, setLoading] = useState(true);
 
     const [carName, setCarName] = useState('');
@@ -25,50 +24,21 @@ function CarSection() {
     const categoryParams = searchParams.get('category');
     const priceParams = searchParams.get('price');
     const statusParams = searchParams.get('status')
-    
 
-    const handleLiveSearch = (data) => {
-        // livesearch cuma bisa pake nama mobil, parameter lainnya belum bisa.
-        const filteredData = data.filter((car) => {
-            if (car.name && car.name.toLowerCase().includes(carName.toLowerCase())) {
-                return true;
-            }
-        })
-        setCars(filteredData);
-    }
+    const [currentPage, setCurrentPage] = useState(1);
 
-    const handleSearchWithParams = (data) => {
-        const checkPrice = (price) => {
-            if (price < 400000 && priceParams == 'lt400') {
-                return true;
-            } else if (price >= 400000 && price <= 600000 && priceParams == '400-600') {
-                return true;
-            } else if (price > 600000 && priceParams == 'gt600') {
-                return true;
-            } else false;
-        } 
-    
-        const checkStatus = (status) => {
-            if (status == false && statusParams == 'tersedia') {
-                return true;
-            } if (status == true && statusParams == 'disewa') {
-                return true;
-            } else false;
-        }
-
-        const filteredData = data.filter((car) => {
-            if (car.name) {
-                return car.name.toLowerCase() == carNameParams.toLowerCase() && car.category == categoryParams && checkPrice(car.price) && checkStatus(car.status);
-            }
-        })
-
-        setCars(filteredData);
-    }
-    
+    const params = {
+        name: carNameParams,
+        category: categoryParams,
+        isRented: statusParams,
+        minPrice: priceParams,
+        page: currentPage
+    }  
 
     const loadCar = async () => {
         try {
-            await dispatch(getAllCars());
+            setLoading(true);
+            await dispatch(getAllCars(params));
             setLoading(false);
         } catch (error) {
             console.log(error);
@@ -79,13 +49,18 @@ function CarSection() {
 
     useEffect(() => {
         loadCar();        
-    },[])
+    },[currentPage, carNameParams, categoryParams, categoryParams, statusParams])
 
     return (
         <Fragment>
             <SearchBar setSearchParams={setSearchParams} carName={carName} setCarName={setCarName} carCategory={carCategory} setCarCategory={setCarCategory} carPrice={carPrice} setCarPrice={setCarPrice} carStatus={carStatus} setCarStatus={setCarStatus} />
             <section id="cars">
                 <div className="container">
+                    <div className="d-flex justify-content-end mb-5">
+                        {currentPage > 1 ? <button className="col-3 btn btn-secondary" onClick={() => setCurrentPage(currentPage-1)}>previous</button> : <button className=" col-3 btn btn-secondary" disabled>next</button>}
+                        <p className="col 2 d-flex justify-content-center align-items-center mb-0">Page {currentPage}</p>
+                        {cars && currentPage < pageCount ? <button className=" col-3 btn btn-secondary" onClick={() => setCurrentPage(currentPage+1)}>next</button> : <button className=" col-3 btn btn-secondary" disabled>next</button>}
+                    </div>
                     <div className="row">
                         {
                             !loading ? (
