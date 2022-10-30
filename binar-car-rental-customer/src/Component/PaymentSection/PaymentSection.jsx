@@ -8,7 +8,7 @@ const PaymentSection = () => {
       <div className="container">
         <div className="row d-flex flex-row-reverse justify-content-evenly mx-1">
           <div className="col-lg-4">
-            <div className=" row-4 card p-3 d">
+            <div className=" row-4 card p-3 ">
               <div className="col p-5">Klik konfirmasi pembayaran untuk mempercepat proses pengecekan</div>
               <button onClick={""}>konfirmasi pembayaran</button>
             </div>

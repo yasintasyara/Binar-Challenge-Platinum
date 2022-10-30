@@ -16,8 +16,6 @@ const getCarById = id => {
     return response;
 }
 
-
-
 const carsAPI = {
     getListCars,
     getCarById,

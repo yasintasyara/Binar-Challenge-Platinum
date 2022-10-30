@@ -4,16 +4,27 @@ import SearchBarPayment from "../SearchBar/SearchBarPayment";
 import "./detailPayment.css";
 import axios from "axios";
 import { useEffect } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee, faChevronDown, faChevronUp } from '@fortawesome/fontawesome-free-solid'
+import { useParams } from "react-router-dom";
 
-const API_URL = "https://bootcamp-rent-car.herokuapp.com";
+
+const API_URL = "https://bootcamp-rent-cars.herokuapp.com/customer";
 const getLocalStorage = JSON.parse(localStorage.getItem("user"));
 function DetailPaymentSection() {
   const [isActive, setIsActive] = useState({ type: "", active: false });
   const [detailCar, setDetailCar] = useState({});
   const [detailOrder, setDetailOrder] = useState({});
+  const [detailToggle, setDetailToggle] = useState(true);
 
   const [loading, setLoading] = useState(false);
 
+  let { id } = useParams();
+
+  const toggleDescription = () => {
+    setDetailToggle((current) => (!current))
+    console.log(detailToggle)
+  }
   const handleClick = (type) => {
     if (type == "BNI") {
       setIsActive(() => ({  type, active: true }));
@@ -35,8 +46,8 @@ function DetailPaymentSection() {
   const getDetailCar = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`${API_URL}/admin/order/337`, config);
-      const res2 = await axios.get(`${API_URL}/admin/car/${res.data.CarId}`);
+      const res = await axios.get(`${API_URL}/order/${id}`, config);
+      const res2 = await axios.get(`${API_URL}/car/${res.data.CarId}`);
       setDetailOrder(res.data);
       setDetailCar(res2.data);
     } catch (error) {
@@ -73,7 +84,7 @@ function DetailPaymentSection() {
         <section className="mb-5" id="detailPayment">
           <div className="container">
             <div className="row justify-content-between">
-              <div className="col-12 col-md-6 card py-4 payment-card h-auto">
+              <div style={{ height: '100%' }} className="col-12 col-md-6 card py-4 payment-card">
                 <h5>Pilih Bank Transfer</h5>
                 <p>
                   Kamu bisa membayar dengan transfer melalui ATM, Internet
@@ -135,17 +146,21 @@ function DetailPaymentSection() {
                 <div className="detail-payment">
                   <div className="detail-payment-item">
                     <h4>{detailCar.name}</h4>
+                    <p>{detailCar.category}</p>
                   </div>
                   <div className="detail-payment-description">
                     <div className="header-detail d-flex justify-content-between">
-                      <h5>Total</h5>
+                      <h5>Total <FontAwesomeIcon style={{ cursor: 'pointer' }} onClick={toggleDescription} icon={detailToggle ?faChevronDown : faChevronUp} /> </h5>
                       <h5>{formatterRupiah(detailOrder.total_price)}</h5>
                     </div>
                   </div>
-                  <div className="content-detail mt-3">
+                  <div style={{ 
+                    opacity: !detailToggle ? "0" : "1",
+                   transition: "all .2s",
+                   height: !detailToggle ? "0px" : "auto",
+                    visibility: `${!detailToggle ? 'hidden' : 'visible'}` }} className="content-detail mt-3">
                     <div className="content-detail-section">
                       <h5>Harga</h5>
-
                       <ul className="lh-lg" style={{ listStyleType: "disc" }}>
                         <li className="d-flex justify-content-between mb-1">
                           <p className="">
@@ -192,7 +207,10 @@ function DetailPaymentSection() {
                         <h5>Total</h5>
                         <h5>{formatterRupiah(detailOrder.total_price)}</h5>
                       </div>
-                      <button
+                     
+                    </div>
+                  </div>
+                  <button
                         type="button"
                         disabled={checkButtonPayment()}
                         className={
@@ -202,8 +220,6 @@ function DetailPaymentSection() {
                       >
                         Bayar
                       </button>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

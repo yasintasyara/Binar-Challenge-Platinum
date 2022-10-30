@@ -7,6 +7,11 @@ button{
     width: 100%;
 }
 
+
+.label{
+    margin-left: 10px;
+ }
+
 .button-bank{
     position: relative;
 }
