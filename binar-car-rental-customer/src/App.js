@@ -19,7 +19,6 @@ function App() {
       <Routes>
         <Route path="/">
           <Route index element={<Home />} />
-
           <Route path="car">
             <Route index element={<Car />} />
             <Route path=":id" element={<CarDetail />} />
@@ -29,7 +28,6 @@ function App() {
           <Route path="payment">
             <Route path=':id' element={<Payment />}  />
             <Route path='*' element={<NotFound />} />
-          </Route>
             <Route path="transfer/:id" element={<PaymentTransfer />} />
             <Route path="*" element={<NotFound />} />
           </Route>
