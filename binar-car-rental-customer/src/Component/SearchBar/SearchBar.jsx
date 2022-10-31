@@ -14,10 +14,7 @@ function SearchBar({carName, setCarName, carCategory, setCarCategory, carPrice, 
     
     const handleOnClick = (e) => {
         e.preventDefault();
-        if (carName && carCategory && carPrice && carStatus) {
-            goToSearch();
-
-        } else alert('Semua Kolom Pencarian Harus Diisi');
+        goToSearch();
     }
 
     return (
@@ -36,20 +33,15 @@ function SearchBar({carName, setCarName, carCategory, setCarCategory, carPrice, 
                                 <label htmlFor="category">Kategori</label>
                                 <select onChange={e => setCarCategory(e.target.value)} required className="p-2" name="category" id="category" style={{height: '35px'}}>
                                     <option value="">Pilih Kapasitas Mobil</option>
-                                    <option value="2 - 4 orang"> 2 - 4 orang</option>
-                                    <option value="4 - 6 orang"> 4 - 6 orang</option>
-                                    <option value="6 - 8 orang"> 6 - 8 orang</option>
+                                    <option value="small">Small</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="large">Large</option>
                                 </select>
                             </div>
 
                             <div className="col-lg-3 d-flex flex-column justify-content-between">
-                                <label htmlFor="price">Harga</label>
-                                <select onChange={e => setCarPrice(e.target.value)} required className="p-2" name="price" id="price" style={{height: '35px'}}>
-                                    <option value="">Pilih Harga Sewa per Hari</option>
-                                    <option value="lt400"> &#60; Rp. 400.000</option>
-                                    <option value="400-600"> Rp. 400.000 - Rp.600.000</option>
-                                    <option value="gt600"> &#62; Rp. 600.000 </option>
-                                </select>
+                                <label htmlFor="price">Harga Minimal</label>
+                                <input value={carPrice} onChange={e => setCarPrice(e.target.value)} required className="p-2" name="price" id="price" style={{height: '35px'}} />
                             </div>
 
                             <div className="col-lg-2 d-flex flex-column justify-content-between">
