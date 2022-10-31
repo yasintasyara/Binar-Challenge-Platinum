@@ -6,7 +6,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee, faChevronDown, faChevronUp } from '@fortawesome/fontawesome-free-solid'
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 
 const API_URL = "https://bootcamp-rent-cars.herokuapp.com/customer";
