@@ -27,7 +27,6 @@ function App() {
           <Route path="search" element={<Search />} />
           <Route path="payment">
             <Route path=':id' element={<Payment />}  />
-            <Route path='*' element={<NotFound />} />
             <Route path="transfer/:id" element={<PaymentTransfer />} />
             <Route path="*" element={<NotFound />} />
           </Route>
