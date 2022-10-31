@@ -6,7 +6,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee, faChevronDown, faChevronUp } from '@fortawesome/fontawesome-free-solid'
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 
 const API_URL = "https://bootcamp-rent-cars.herokuapp.com/customer";
@@ -16,6 +16,7 @@ function DetailPaymentSection() {
   const [detailCar, setDetailCar] = useState({});
   const [detailOrder, setDetailOrder] = useState({});
   const [detailToggle, setDetailToggle] = useState(true);
+  const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
 
@@ -216,7 +217,8 @@ function DetailPaymentSection() {
                         className={
                           "cst-button" +
                           (checkButtonPayment() == true ? " disabled" : "")
-                        }                     
+                        }
+                        onClick={() => navigate(`/payment/transfer/${id}`)}
                       >
                         Bayar
                       </button>
