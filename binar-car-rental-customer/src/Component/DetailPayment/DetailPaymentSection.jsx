@@ -16,6 +16,7 @@ function DetailPaymentSection() {
   const [detailCar, setDetailCar] = useState({});
   const [detailOrder, setDetailOrder] = useState({});
   const [detailToggle, setDetailToggle] = useState(true);
+  const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
 
@@ -217,6 +218,7 @@ function DetailPaymentSection() {
                           "cst-button" +
                           (checkButtonPayment() == true ? " disabled" : "")
                         }
+                        onClick={() => navigate(`/payment/transfer/${id}`)}
                       >
                         Bayar
                       </button>
